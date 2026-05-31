@@ -412,7 +412,15 @@ function margineStimato(l){return parseFloat(l.incassato||0)-totCostiStimati(l);
 // Spese reali collegate a un lavoro (da db.spese)
 function speseRealiLav(lid){return db.spese.filter(s=>s.lavoroId===lid);}
 function totSpeseReali(lid){return speseRealiLav(lid).reduce((s,x)=>s+parseFloat(x.importo||0),0);}
-function margineReale(l){return parseFloat(l.incassato||0)-totSpeseReali(l.id);}
+function margineReale(l){
+  const c=l.costi||{};
+  // Spese reali collegate (materiali documentati)
+  const spReali=totSpeseReali(l.id);
+  // Costi stimati NON materiali (manodopera, viaggi, burocrazia, tasse, altro)
+  // I materiali stimati NON si sommano perché li inserisci come spese reali
+  const costiExtra=(parseFloat(c.manodopera)||0)+(parseFloat(c.viaggi)||0)+(parseFloat(c.burocrazia)||0)+(parseFloat(c.tasse)||0)+(parseFloat(c.altro)||0);
+  return parseFloat(l.incassato||0)-spReali-costiExtra;
+}
 
 function liveMarg(){
   const inc=parseFloat(document.getElementById('l-inc').value)||0;
@@ -614,12 +622,72 @@ function rLavori(){
   const totInc=lavori.reduce((s,l)=>s+parseFloat(l.incassato||0),0);
   const totMR=lavori.reduce((s,l)=>s+margineReale(l),0);
   const inAttesa=lavori.filter(l=>parseFloat(l.preventivo||0)>parseFloat(l.incassato||0)).reduce((s,l)=>s+(parseFloat(l.preventivo||0)-parseFloat(l.incassato||0)),0);
+  const percMargine=totInc>0?((totMR/totInc)*100).toFixed(1):0;
+
+  // Spese per categoria su tutti i lavori (spese reali collegate)
+  const catMap={};
+  db.spese.filter(s=>s.lavoroId).forEach(s=>{
+    if(!catMap[s.categoria])catMap[s.categoria]=0;
+    catMap[s.categoria]+=parseFloat(s.importo||0);
+  });
+  // Aggiungi manodopera/viaggi/burocrazia/tasse/altro dai costi stimati
+  db.lavori.forEach(l=>{
+    const c=l.costi||{};
+    [['Manodopera',c.manodopera],['Viaggi/Trasferte',c.viaggi],['Burocrazia',c.burocrazia],['Tasse/IVA',c.tasse],['Altro',c.altro]].forEach(([n,v])=>{
+      if(parseFloat(v||0)>0){if(!catMap[n])catMap[n]=0;catMap[n]+=parseFloat(v);}
+    });
+  });
+  const catArr=Object.entries(catMap).sort((a,b)=>b[1]-a[1]);
+  const maxCat=Math.max(...catArr.map(c=>c[1]),1);
+  const colors=['#e74c3c','#f39c12','#3b7dd8','#9b59b6','#1abc9c','#e67e22','#16a085'];
+
+  // Top 3 lavori per margine reale
+  const topLav=[...lavori].sort((a,b)=>margineReale(b)-margineReale(a)).slice(0,3);
+  // Bottom 3 lavori (meno redditizi)
+  const botLav=[...lavori].sort((a,b)=>margineReale(a)-margineReale(b)).slice(0,3);
+
   document.getElementById('c-lavori').innerHTML=`
-    <div class="g3">
-      <div class="st"><div class="sl">Totale</div><div class="sv cb">${lavori.length}</div></div>
-      <div class="st"><div class="sl">Incassato</div><div class="sv cg" style="font-size:14px">${fe(totInc)}</div></div>
-      <div class="st"><div class="sl">Da incassare</div><div class="sv co" style="font-size:14px">${fe(inAttesa)}</div></div>
+    <div class="sec">Riepilogo generale</div>
+    <div class="g2">
+      <div class="st"><div class="sl">Incassato tot.</div><div class="sv cg" style="font-size:15px">${fe(totInc)}</div></div>
+      <div class="st"><div class="sl">Da incassare</div><div class="sv co" style="font-size:15px">${fe(inAttesa)}</div></div>
     </div>
+    <div class="g2">
+      <div class="st"><div class="sl">Margine reale tot.</div><div class="sv ${totMR>=0?'ct':'cr'}" style="font-size:15px">${fe(totMR)}</div></div>
+      <div class="st"><div class="sl">% margine medio</div><div class="sv ${parseFloat(percMargine)>=30?'cg':parseFloat(percMargine)>=15?'co':'cr'}" style="font-size:15px">${percMargine}%</div></div>
+    </div>
+
+    ${catArr.length?`
+    <div class="sec">Dove spendi sui lavori</div>
+    <div class="card">
+      ${catArr.map((c,i)=>`
+        <div style="margin-bottom:10px">
+          <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:3px">
+            <span>${esc(c[0])}</span><span style="color:#6b7280">${fe(c[1])}</span>
+          </div>
+          <div class="pw"><div class="pf" style="width:${(c[1]/maxCat*100).toFixed(1)}%;background:${colors[i%colors.length]}"></div></div>
+        </div>`).join('')}
+    </div>`:''}
+
+    ${topLav.length>1?`
+    <div class="sec">🏆 Lavori più redditizi</div>
+    ${topLav.map(l=>`
+      <div class="item lg" onclick="openDet('${l.id}')">
+        <div class="ir"><span class="it">${esc(l.cliente)}</span><span class="ia ct">${fe(margineReale(l))}</span></div>
+        <div class="is">${esc(l.tipo||'')} · ${fd(l.data)}</div>
+        <div class="itg"><span style="font-size:11px;color:#6b7280">Incassato ${fe(l.incassato)} · Margine ${totInc>0?((margineReale(l)/parseFloat(l.incassato||1))*100).toFixed(0):'0'}%</span></div>
+      </div>`).join('')}`:''}
+
+    ${botLav.length>1&&botLav[0].id!==topLav[0]?.id?`
+    <div class="sec">⚠️ Lavori meno redditizi</div>
+    ${botLav.filter(l=>!topLav.find(t=>t.id===l.id)).slice(0,2).map(l=>`
+      <div class="item lo" onclick="openDet('${l.id}')">
+        <div class="ir"><span class="it">${esc(l.cliente)}</span><span class="ia ${margineReale(l)>=0?'co':'cr'}">${fe(margineReale(l))}</span></div>
+        <div class="is">${esc(l.tipo||'')} · ${fd(l.data)}</div>
+        <div class="itg"><span style="font-size:11px;color:#6b7280">Incassato ${fe(l.incassato)} · Margine ${parseFloat(l.incassato||0)>0?((margineReale(l)/parseFloat(l.incassato))*100).toFixed(0):'0'}%</span></div>
+      </div>`).join('')}`:''}
+
+    <div class="sec">Tutti i lavori (${lavori.length})</div>
     <button class="btn bp" style="width:100%;margin-bottom:12px" onclick="openLav()">+ Nuovo lavoro</button>
     ${lavori.length?lavori.map(l=>cLav(l)).join(''):emp('🔧','Nessun lavoro')}
   `;
@@ -631,7 +699,8 @@ function openDet(id){
   const tc=totCostiStimati(l), ms=margineStimato(l);
   const spColl=speseRealiLav(id);
   const totSp=spColl.reduce((s,x)=>s+parseFloat(x.importo||0),0);
-  const mr=parseFloat(l.incassato||0)-totSp;
+  const costiExtra=(parseFloat(c.manodopera)||0)+(parseFloat(c.viaggi)||0)+(parseFloat(c.burocrazia)||0)+(parseFloat(c.tasse)||0)+(parseFloat(c.altro)||0);
+  const mr=parseFloat(l.incassato||0)-totSp-costiExtra;
   const saldoAp=parseFloat(l.preventivo||0)-parseFloat(l.incassato||0);
   const pc={'cash':'bg','bonifico':'bb','misto':'bo','in attesa':'bx'}[l.pagamento]||'bx';
   const costiR=[['Materiali',c.materiali],['Manodopera',c.manodopera],['Viaggi',c.viaggi],['Burocrazia',c.burocrazia],['Tasse/IVA',c.tasse],['Altro',c.altro]].filter(([,v])=>parseFloat(v||0)>0);
@@ -658,6 +727,9 @@ function openDet(id){
     <div class="sr" style="margin-top:4px;padding-top:4px">
       <span class="sl2" style="font-weight:700;font-size:15px">📊 Margine reale</span>
       <span class="sv2" style="font-size:18px;color:${mr>=0?'#1abc9c':'#e74c3c'}">${fe(mr)}</span>
+    </div>
+    <div style="font-size:11px;color:#4a5568;margin-top:4px;padding-bottom:4px">
+      Incassato ${fe(l.incassato)} − spese reali ${fe(totSp)}${costiExtra>0?' − manodopera/viaggi/altro '+fe(costiExtra):''}
     </div>
     ${l.note?`<div style="margin-top:10px;padding:10px;background:#0f1117;border-radius:8px;font-size:13px;color:#6b7280">${esc(l.note)}</div>`:''}
     ${l.allegati&&l.allegati.length?`
