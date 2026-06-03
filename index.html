@@ -9,34 +9,26 @@
 <title>Il Mio Sistema V4</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-html,body{height:100%;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#0f1117;color:#e8eaf0;font-size:15px;overflow:hidden;}
+html,body{height:100%;font-family:system-ui,-apple-system,sans-serif;background:#0f1117;color:#e8eaf0;font-size:15px;overflow:hidden;}
 #app{height:100%;display:flex;flex-direction:column;}
 .page{display:none;flex:1;overflow-y:auto;padding:14px 14px calc(88px + env(safe-area-inset-bottom));}
 .page.active{display:block;}
-/* HEADER */
 .hdr{background:#161b26;border-bottom:1px solid #2a3348;padding:12px 14px;padding-top:calc(12px + env(safe-area-inset-top));display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
-.hdr h1{font-size:17px;font-weight:700;letter-spacing:-0.3px;}
-.hdr-a{display:flex;gap:6px;}
-.ibtn{background:#2a3348;border:none;color:#e8eaf0;width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;flex-shrink:0;}
-/* NAV */
+.hdr h1{font-size:17px;font-weight:700;}
+.hdr-a{display:flex;gap:5px;}
+.ibtn{background:#2a3348;border:none;color:#e8eaf0;width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:11px;flex-shrink:0;font-weight:700;}
 .nav{background:#161b26;border-top:1px solid #2a3348;display:flex;padding-bottom:env(safe-area-inset-bottom);flex-shrink:0;}
 .ni{flex:1;display:flex;flex-direction:column;align-items:center;padding:9px 2px 7px;cursor:pointer;gap:2px;border:none;background:none;color:#6b7280;}
-.ni.on{color:#3b7dd8;}
-.ni svg{width:21px;height:21px;}
-.ni span{font-size:9px;font-weight:600;}
-/* LAYOUT */
+.ni.on{color:#3b7dd8;}.ni svg{width:20px;height:20px;}.ni span{font-size:9px;font-weight:600;}
 .sec{font-size:11px;font-weight:700;color:#4a5568;text-transform:uppercase;letter-spacing:1px;margin:16px 0 8px;}
 .sec:first-child{margin-top:2px;}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;}
 .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px;}
-/* STAT */
 .st{background:#161b26;border:1px solid #2a3348;border-radius:11px;padding:11px 12px;}
 .st.tap{cursor:pointer;}
 .sl{font-size:10px;color:#4a5568;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;}
-.sv{font-size:17px;font-weight:800;line-height:1;letter-spacing:-0.5px;}
-/* COLORS */
+.sv{font-size:17px;font-weight:800;line-height:1;}
 .cg{color:#2ecc71;}.cr{color:#e74c3c;}.cb{color:#3b7dd8;}.co{color:#f39c12;}.ct{color:#1abc9c;}.cx{color:#6b7280;}
-/* ITEMS */
 .item{background:#161b26;border:1px solid #2a3348;border-radius:11px;padding:12px;margin-bottom:7px;cursor:pointer;}
 .item.lg{border-left:3px solid #2ecc71;}.item.lr{border-left:3px solid #e74c3c;}.item.lo{border-left:3px solid #f39c12;}.item.lb{border-left:3px solid #3b7dd8;}.item.lx{border-left:3px solid #4a5568;}
 .ir{display:flex;justify-content:space-between;align-items:flex-start;}
@@ -44,19 +36,15 @@ html,body{height:100%;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;
 .ia{font-weight:800;font-size:15px;white-space:nowrap;}
 .is{font-size:12px;color:#4a5568;margin-top:3px;}
 .itg{display:flex;gap:6px;align-items:center;margin-top:7px;flex-wrap:wrap;}
-/* BADGES */
 .bdg{display:inline-block;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700;}
-.bg{background:#0d2e18;color:#2ecc71;}.bb{background:#0d1e3a;color:#3b7dd8;}.bo{background:#2e1e08;color:#f39c12;}.br2{background:#2e0d0d;color:#e74c3c;}.bx{background:#1e2533;color:#6b7280;}
-.lnk{display:inline-flex;align-items:center;gap:3px;background:#0d1e3a;border:1px solid #1a3a5a;border-radius:20px;padding:2px 8px;font-size:10px;font-weight:700;color:#3b7dd8;}
-/* MODAL */
+.bg{background:#0d2e18;color:#2ecc71;}.bb{background:#0d1e3a;color:#3b7dd8;}.bo{background:#2e1e08;color:#f39c12;}
+.lnk{display:inline-flex;background:#0d1e3a;border:1px solid #1a3a5a;border-radius:20px;padding:2px 8px;font-size:10px;font-weight:700;color:#3b7dd8;}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.78);z-index:200;display:none;align-items:flex-end;}
-.overlay.show{display:flex;}
-.overlay.ctr{align-items:center;justify-content:center;}
+.overlay.show{display:flex;}.overlay.ctr{align-items:center;justify-content:center;}
 .modal{background:#161b26;border-radius:20px 20px 0 0;width:100%;max-height:93vh;overflow-y:auto;padding:20px 14px;padding-bottom:calc(20px + env(safe-area-inset-bottom));}
 .msm{background:#1a2030;border-radius:16px;padding:20px;width:calc(100% - 40px);max-width:340px;}
 .mt{font-size:16px;font-weight:700;margin-bottom:14px;}
 .mft{display:flex;gap:8px;margin-top:16px;}
-/* FORM */
 .fg{margin-bottom:11px;}
 .fl{font-size:11px;font-weight:700;color:#4a5568;margin-bottom:5px;display:block;text-transform:uppercase;letter-spacing:0.4px;}
 .fi{width:100%;background:#0f1117;border:1px solid #2a3348;border-radius:9px;padding:10px 11px;color:#e8eaf0;font-size:15px;font-family:inherit;outline:none;}
@@ -64,16 +52,13 @@ html,body{height:100%;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;
 .fs{width:100%;background:#0f1117;border:1px solid #2a3348;border-radius:9px;padding:10px 11px;color:#e8eaf0;font-size:15px;font-family:inherit;outline:none;-webkit-appearance:none;}
 .ft{width:100%;background:#0f1117;border:1px solid #2a3348;border-radius:9px;padding:10px 11px;color:#e8eaf0;font-size:15px;font-family:inherit;outline:none;resize:vertical;min-height:65px;}
 .fg2{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-/* BUTTONS */
 .btn{border:none;border-radius:11px;padding:12px 18px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;flex:1;}
 .bp{background:#3b7dd8;color:#fff;}.bg2{background:#2ecc71;color:#fff;}.br{background:#e74c3c;color:#fff;}.bx2{background:#2a3348;color:#e8eaf0;}
 .bsm{padding:6px 12px;font-size:12px;border-radius:8px;flex:none;border:none;cursor:pointer;font-family:inherit;font-weight:700;}
-/* FILTERS */
 .fltrs{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;margin-bottom:10px;scrollbar-width:none;}
 .fltrs::-webkit-scrollbar{display:none;}
 .fb{flex-shrink:0;background:#1e2533;border:1px solid #2a3348;color:#6b7280;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;}
 .fb.on{background:#3b7dd8;border-color:#3b7dd8;color:#fff;}
-/* MISC */
 .cwrap{background:#161b26;border:1px solid #2a3348;border-radius:11px;padding:12px;margin-bottom:10px;}
 .uzone{border:2px dashed #2a3348;border-radius:9px;padding:14px;text-align:center;cursor:pointer;}
 .atch{background:#0f1117;border:1px solid #2a3348;border-radius:8px;padding:7px 10px;display:flex;align-items:center;justify-content:space-between;margin-top:5px;font-size:12px;color:#6b7280;}
@@ -81,1122 +66,778 @@ html,body{height:100%;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;
 .pf{height:100%;border-radius:4px;}
 .sr{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid #2a3348;}
 .sr:last-child{border-bottom:none;}
-.sl2{color:#6b7280;font-size:13px;}
-.sv2{font-weight:700;font-size:14px;}
+.sl2{color:#6b7280;font-size:13px;}.sv2{font-weight:700;font-size:14px;}
 .dvd{border:none;border-top:1px solid #2a3348;margin:10px 0;}
 .ar{display:flex;gap:8px;margin-bottom:12px;}
 .card{background:#161b26;border:1px solid #2a3348;border-radius:11px;padding:12px;margin-bottom:8px;}
-.toast{position:fixed;top:calc(env(safe-area-inset-top)+56px);left:50%;transform:translateX(-50%);background:#1e2533;border:1px solid #2a3348;border-radius:11px;padding:9px 16px;font-size:13px;font-weight:600;z-index:999;opacity:0;transition:opacity 0.25s;pointer-events:none;white-space:nowrap;max-width:90vw;}
+.toast{position:fixed;top:calc(env(safe-area-inset-top) + 56px);left:50%;transform:translateX(-50%);background:#1e2533;border:1px solid #2a3348;border-radius:11px;padding:9px 16px;font-size:13px;font-weight:600;z-index:999;opacity:0;transition:opacity 0.25s;pointer-events:none;white-space:nowrap;max-width:90vw;}
 .toast.show{opacity:1;}
 .empty{text-align:center;padding:36px 20px;color:#4a5568;}
 .empty p{font-size:13px;margin-top:8px;}
-/* NOTA INFO */
-.info-box{background:#0d1e3a;border:1px solid #1a3a5a;border-radius:9px;padding:10px 12px;font-size:12px;color:#3b7dd8;margin-bottom:12px;line-height:1.5;}
+.ibox{background:#0d1e3a;border:1px solid #1a3a5a;border-radius:9px;padding:10px 12px;font-size:12px;color:#3b7dd8;margin-bottom:12px;line-height:1.5;}
+.cbox{background:#0f1117;border:1px solid #2a3348;border-radius:9px;padding:10px;margin-bottom:11px;}
 </style>
 </head>
 <body>
 <div id="app">
   <div class="hdr">
-    <h1>💧 Il Mio Sistema</h1>
+    <h1>Il Mio Sistema</h1>
     <div class="hdr-a">
-      <button class="ibtn" onclick="importBackup()" title="Importa">📥</button>
-      <button class="ibtn" onclick="exportCSV()" title="CSV">📊</button>
-      <button class="ibtn" onclick="exportJSON()" title="Backup">💾</button>
-      <button class="ibtn" onclick="doRestoreAuto()" title="Auto-backup">🔄</button>
+      <button class="ibtn" onclick="importBackup()">IN</button>
+      <button class="ibtn" onclick="exportCSV()">CSV</button>
+      <button class="ibtn" onclick="exportJSON()">BAK</button>
+      <button class="ibtn" onclick="exportAnalisi()">RPT</button>
+      <button class="ibtn" onclick="doRestoreAuto()">RST</button>
     </div>
   </div>
   <div id="page-home" class="page active"><div id="c-home"></div></div>
   <div id="page-eu" class="page"><div id="c-eu"></div></div>
   <div id="page-lavori" class="page"><div id="c-lavori"></div></div>
   <div id="page-aiutanti" class="page"><div id="c-aiutanti"></div></div>
-  <div id="page-rimborsi" class="page"><div id="c-rimborsi"></div></div>
+  <div id="page-clienti" class="page"><div id="c-clienti"></div></div>
   <div id="page-bilancio" class="page"><div id="c-bilancio"></div></div>
   <nav class="nav">
     <button class="ni on" data-p="home" onclick="nav('home')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span>
     </button>
     <button class="ni" data-p="eu" onclick="nav('eu')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Movim.</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Movim.</span>
     </button>
     <button class="ni" data-p="lavori" onclick="nav('lavori')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><span>Lavori</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><span>Lavori</span>
     </button>
     <button class="ni" data-p="aiutanti" onclick="nav('aiutanti')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Aiutanti</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Aiutanti</span>
     </button>
-    <button class="ni" data-p="rimborsi" onclick="nav('rimborsi')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg><span>Rimborsi</span>
+    <button class="ni" data-p="clienti" onclick="nav('clienti')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Clienti</span>
     </button>
     <button class="ni" data-p="bilancio" onclick="nav('bilancio')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span>Bilancio</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span>Bilancio</span>
     </button>
   </nav>
 </div>
 
-<!-- MODAL ENTRATA -->
-<div id="m-ent" class="overlay" onclick="oc(event,'m-ent')">
-  <div class="modal">
-    <div class="mt" id="t-ent">+ Entrata extra</div>
-    <div class="info-box">💡 Usa questa sezione per mance, bonus e rimborsi ricevuti. L'incassato dei lavori va inserito direttamente nel lavoro.</div>
-    <div class="fg"><label class="fl">Descrizione</label><input class="fi" id="e-desc" placeholder="Es. Mancia cliente Rossi"></div>
-    <div class="fg2">
-      <div class="fg"><label class="fl">Importo €</label><input class="fi" id="e-imp" type="number" inputmode="decimal" placeholder="0"></div>
-      <div class="fg"><label class="fl">Data</label><input class="fi" id="e-data" type="date"></div>
-    </div>
-    <div class="fg"><label class="fl">Categoria</label>
-      <select class="fs" id="e-cat"><option>Extra/Bonus</option><option>Rimborso ricevuto</option><option>Altro</option></select>
-    </div>
-    <div class="fg"><label class="fl">Note</label><textarea class="ft" id="e-note" rows="2"></textarea></div>
-    <div class="mft">
-      <button class="btn bx2" onclick="cm('m-ent')">Annulla</button>
-      <button class="btn bg2" onclick="saveEnt()">Salva</button>
-    </div>
-    <div id="e-del" style="margin-top:8px;display:none">
-      <button class="btn br" style="width:100%" onclick="doDelEnt()">🗑 Elimina</button>
-    </div>
+<!-- ENTRATA -->
+<div id="m-ent" class="overlay" onclick="oc(event,'m-ent')"><div class="modal">
+  <div class="mt" id="t-ent">+ Entrata extra</div>
+  <div class="ibox">Mance, bonus, rimborsi. L'incassato va nel lavoro.</div>
+  <div class="fg"><label class="fl">Descrizione</label><input class="fi" id="e-desc" placeholder="Es. Mancia cliente"></div>
+  <div class="fg2"><div class="fg"><label class="fl">Importo</label><input class="fi" id="e-imp" type="number" inputmode="decimal" placeholder="0"></div><div class="fg"><label class="fl">Data</label><input class="fi" id="e-data" type="date"></div></div>
+  <div class="fg"><label class="fl">Categoria</label><select class="fs" id="e-cat"><option>Extra/Bonus</option><option>Rimborso ricevuto</option><option>Altro</option></select></div>
+  <div class="fg"><label class="fl">Note</label><textarea class="ft" id="e-note" rows="2"></textarea></div>
+  <div class="mft"><button class="btn bx2" onclick="cm('m-ent')">Annulla</button><button class="btn bg2" onclick="saveEnt()">Salva</button></div>
+  <div id="e-del" style="margin-top:8px;display:none"><button class="btn br" style="width:100%" onclick="doDelEnt()">Elimina</button></div>
+</div></div>
+<!-- USCITA -->
+<div id="m-usc" class="overlay" onclick="oc(event,'m-usc')"><div class="modal">
+  <div class="mt" id="t-usc">+ Uscita</div>
+  <div class="fg"><label class="fl">Descrizione</label><input class="fi" id="u-desc" placeholder="Es. Benzina furgone"></div>
+  <div class="fg2"><div class="fg"><label class="fl">Importo</label><input class="fi" id="u-imp" type="number" inputmode="decimal" placeholder="0"></div><div class="fg"><label class="fl">Data</label><input class="fi" id="u-data" type="date"></div></div>
+  <div class="fg"><label class="fl">Categoria</label>
+    <select class="fs" id="u-cat"><option>Carburante</option><option>Materiali lavoro</option><option>Manodopera</option><option>Attrezzatura</option><option>Investimento</option><option>Vitto</option><option>Svago</option><option>Vacanza/Viaggi</option><option>Casa</option><option>Furgone/Auto</option><option>Assicurazioni</option><option>Telefonia</option><option>Software/Abbonamenti</option><option>Salute</option><option>Abbigliamento lavoro</option><option>Spese bancarie</option><option>Regali</option><option>Formazione</option><option>Altro</option></select>
   </div>
-</div>
-
-<!-- MODAL USCITA -->
-<div id="m-usc" class="overlay" onclick="oc(event,'m-usc')">
-  <div class="modal">
-    <div class="mt" id="t-usc">+ Uscita</div>
-    <div class="fg"><label class="fl">Descrizione</label><input class="fi" id="u-desc" placeholder="Es. Benzina furgone"></div>
-    <div class="fg2">
-      <div class="fg"><label class="fl">Importo €</label><input class="fi" id="u-imp" type="number" inputmode="decimal" placeholder="0"></div>
-      <div class="fg"><label class="fl">Data</label><input class="fi" id="u-data" type="date"></div>
-    </div>
-    <div class="fg"><label class="fl">Categoria</label>
-      <select class="fs" id="u-cat">
-        <option>Carburante</option><option>Materiali lavoro</option><option>Attrezzatura</option><option>Investimento</option>
-        <option>Vitto</option><option>Svago</option><option>Vacanza/Viaggi</option><option>Casa</option>
-        <option>Furgone/Auto</option><option>Assicurazioni</option><option>Telefonia</option><option>Software/Abbonamenti</option>
-        <option>Salute</option><option>Abbigliamento lavoro</option><option>Spese bancarie</option><option>Regali</option>
-        <option>Formazione</option><option>Altro</option>
-      </select>
-    </div>
-    <div class="fg"><label class="fl">Collega a lavoro (opz.)</label>
-      <select class="fs" id="u-lav"><option value="">— Nessun lavoro —</option></select>
-    </div>
-    <div class="fg"><label class="fl">Note</label><textarea class="ft" id="u-note" rows="2"></textarea></div>
-    <div class="mft">
-      <button class="btn bx2" onclick="cm('m-usc')">Annulla</button>
-      <button class="btn br" onclick="saveUsc()">Salva</button>
-    </div>
-    <div id="u-del" style="margin-top:8px;display:none">
-      <button class="btn br" style="width:100%;background:#3a1010" onclick="doDelUsc()">🗑 Elimina</button>
-    </div>
+  <div class="fg"><label class="fl">Collega a lavoro (opz.)</label><select class="fs" id="u-lav"><option value="">Nessun lavoro</option></select></div>
+  <div class="fg"><label class="fl">Note</label><textarea class="ft" id="u-note" rows="2"></textarea></div>
+  <div class="mft"><button class="btn bx2" onclick="cm('m-usc')">Annulla</button><button class="btn br" onclick="saveUsc()">Salva</button></div>
+  <div id="u-del" style="margin-top:8px;display:none"><button class="btn br" style="width:100%;background:#3a1010" onclick="doDelUsc()">Elimina</button></div>
+</div></div>
+<!-- LAVORO -->
+<div id="m-lav" class="overlay" onclick="oc(event,'m-lav')"><div class="modal">
+  <div class="mt" id="t-lav">+ Lavoro</div>
+  <div class="fg"><label class="fl">Stato</label>
+    <select class="fs" id="l-stato"><option value="lead">Lead - richiesta ricevuta</option><option value="preventivo">Preventivo inviato</option><option value="confermato">Confermato</option><option value="in esecuzione">In esecuzione</option><option value="completato">Completato</option><option value="saldato">Saldato</option></select>
   </div>
-</div>
-
-<!-- MODAL LAVORO -->
-<div id="m-lav" class="overlay" onclick="oc(event,'m-lav')">
-  <div class="modal">
-    <div class="mt" id="t-lav">+ Lavoro</div>
-    <div class="fg2">
-      <div class="fg"><label class="fl">Cliente</label><input class="fi" id="l-cli" placeholder="Es. Rossi"></div>
-      <div class="fg"><label class="fl">Data</label><input class="fi" id="l-dat" type="date"></div>
-    </div>
-    <div class="fg"><label class="fl">Tipo lavoro</label><input class="fi" id="l-tip" placeholder="Es. Sostituzione caldaia"></div>
-    <div class="fg2">
-      <div class="fg"><label class="fl">Zona</label><input class="fi" id="l-zon" placeholder="Es. Lodi"></div>
-      <div class="fg"><label class="fl">Pagamento</label>
-        <select class="fs" id="l-pag"><option value="cash">Cash</option><option value="bonifico">Bonifico</option><option value="misto">Misto</option><option value="in attesa">In attesa</option></select>
-      </div>
-    </div>
-    <div class="fg2">
-      <div class="fg"><label class="fl">Preventivo €</label><input class="fi" id="l-pre" type="number" inputmode="decimal" placeholder="0"></div>
-      <div class="fg"><label class="fl">Incassato €</label><input class="fi" id="l-inc" type="number" inputmode="decimal" placeholder="0" oninput="liveMarg()"></div>
-    </div>
-    <!-- COSTI STIMATI (solo per margine preventivo) -->
-    <div class="sec">Costi stimati del lavoro</div>
-    <div class="info-box">Inserisci qui i costi che hai sostenuto per questo lavoro. Questi NON si sommano alle uscite in Movimenti — per quello usa "+ Uscita" con il collegamento al lavoro.</div>
-    <div style="background:#0f1117;border:1px solid #2a3348;border-radius:9px;padding:10px;margin-bottom:11px">
-      <div class="fg2" style="margin-bottom:8px">
-        <div><label class="fl">Materiali €</label><input class="fi" id="l-mat" type="number" inputmode="decimal" placeholder="0" oninput="liveMarg()"></div>
-        <div><label class="fl">Manodopera €</label><input class="fi" id="l-mdo" type="number" inputmode="decimal" placeholder="0" oninput="liveMarg()"></div>
-      </div>
-      <div class="fg2" style="margin-bottom:8px">
-        <div><label class="fl">Viaggi €</label><input class="fi" id="l-via" type="number" inputmode="decimal" placeholder="0" oninput="liveMarg()"></div>
-        <div><label class="fl">Burocrazia €</label><input class="fi" id="l-bur" type="number" inputmode="decimal" placeholder="0" oninput="liveMarg()"></div>
-      </div>
-      <div class="fg2">
-        <div><label class="fl">Tasse/IVA €</label><input class="fi" id="l-tas" type="number" inputmode="decimal" placeholder="0" oninput="liveMarg()"></div>
-        <div><label class="fl">Altro €</label><input class="fi" id="l-alt" type="number" inputmode="decimal" placeholder="0" oninput="liveMarg()"></div>
-      </div>
-      <div style="margin-top:8px;padding-top:8px;border-top:1px solid #2a3348;display:flex;justify-content:space-between">
-        <span style="font-size:13px;color:#6b7280">Tot. costi stimati</span>
-        <span id="l-tc" style="font-weight:700;color:#e74c3c;font-size:13px">0€</span>
-      </div>
-      <div style="margin-top:4px;display:flex;justify-content:space-between">
-        <span style="font-size:13px;color:#6b7280">Margine stimato</span>
-        <span id="l-mg" style="font-weight:700;font-size:13px;color:#1abc9c">0€</span>
-      </div>
-    </div>
-    <div class="fg"><label class="fl">Note</label><textarea class="ft" id="l-not" rows="2"></textarea></div>
-    <div class="fg">
-      <label class="fl">Allegati</label>
-      <div class="uzone" onclick="document.getElementById('l-fil').click()">
-        <div style="font-size:20px;margin-bottom:3px">📎</div>
-        <div style="font-size:12px;color:#4a5568">Tocca per allegare (max 3MB)</div>
-      </div>
-      <input type="file" id="l-fil" style="display:none" multiple accept="image/*,.pdf" onchange="hFiles(event)">
-      <div id="l-att"></div>
-    </div>
-    <div class="mft">
-      <button class="btn bx2" onclick="cm('m-lav')">Annulla</button>
-      <button class="btn bp" onclick="saveLav()">Salva</button>
-    </div>
-    <div id="l-del" style="margin-top:8px;display:none">
-      <button class="btn br" style="width:100%" onclick="doDelLav()">🗑 Elimina lavoro</button>
-    </div>
+  <div class="fg"><label class="fl">Cliente da rubrica</label>
+    <div style="display:flex;gap:6px"><select class="fs" id="l-cliid" style="flex:1" onchange="onCliSel()"><option value="">Seleziona dalla rubrica</option></select><button type="button" class="bsm bp" onclick="openCliDaLav()">+ Nuovo</button></div>
   </div>
-</div>
-
-<!-- MODAL DETTAGLIO LAVORO -->
-<div id="m-det" class="overlay" onclick="oc(event,'m-det')">
-  <div class="modal" id="det-body"></div>
-</div>
-
-<!-- MODAL AIUTANTE -->
-<div id="m-ait" class="overlay" onclick="oc(event,'m-ait')">
-  <div class="modal">
-    <div class="mt" id="t-ait">+ Aiutante</div>
-    <div class="fg"><label class="fl">Nome</label><input class="fi" id="a-nom"></div>
-    <div class="fg"><label class="fl">Telefono</label><input class="fi" id="a-tel" type="tel"></div>
-    <div class="fg2">
-      <div class="fg"><label class="fl">Tariffa giornata €</label><input class="fi" id="a-gio" type="number" inputmode="decimal"></div>
-      <div class="fg"><label class="fl">Tariffa mezza g. €</label><input class="fi" id="a-mez" type="number" inputmode="decimal"></div>
-    </div>
-    <div class="mft">
-      <button class="btn bx2" onclick="cm('m-ait')">Annulla</button>
-      <button class="btn bp" onclick="saveAit()">Salva</button>
-    </div>
-    <div id="a-del" style="margin-top:8px;display:none">
-      <button class="btn br" style="width:100%" onclick="doDelAit()">🗑 Elimina aiutante</button>
-    </div>
+  <div class="fg2"><div class="fg"><label class="fl">Nome cliente</label><input class="fi" id="l-cli" placeholder="Es. Rossi Mario"></div><div class="fg"><label class="fl">Zona</label><input class="fi" id="l-zon" placeholder="Es. Lodi"></div></div>
+  <div class="fg"><label class="fl">Tipo lavoro</label><input class="fi" id="l-tip" placeholder="Es. Sostituzione caldaia"></div>
+  <div class="fg2">
+    <div class="fg"><label class="fl">Pagamento</label><select class="fs" id="l-pag"><option value="cash">Cash</option><option value="bonifico">Bonifico</option><option value="misto">Misto</option><option value="in attesa">In attesa</option></select></div>
+    <div class="fg"><label class="fl">Fonte</label><select class="fs" id="l-fonte"><option value="">-</option><option value="passaparola">Passaparola</option><option value="gia cliente">Gia cliente</option><option value="social">Social</option><option value="web">Web</option><option value="altro">Altro</option></select></div>
   </div>
-</div>
-
-<!-- MODAL TURNO -->
-<div id="m-tur" class="overlay" onclick="oc(event,'m-tur')">
-  <div class="modal">
-    <div class="mt">+ Turno</div>
-    <div class="fg"><label class="fl">Aiutante</label><select class="fs" id="t-aid" onchange="fillB()"></select></div>
-    <div class="fg2">
-      <div class="fg"><label class="fl">Data</label><input class="fi" id="t-dat" type="date"></div>
-      <div class="fg"><label class="fl">Tipo</label>
-        <select class="fs" id="t-tip" onchange="fillB()">
-          <option value="giornata">Giornata</option><option value="mezza">Mezza g.</option><option value="personalizzato">Personalizzato</option>
-        </select>
-      </div>
-    </div>
-    <div class="fg"><label class="fl">Base €</label><input class="fi" id="t-bas" type="number" inputmode="decimal"></div>
-    <div class="fg2">
-      <div class="fg"><label class="fl">Pranzo €</label><input class="fi" id="t-pra" type="number" inputmode="decimal" placeholder="0"></div>
-      <div class="fg"><label class="fl">Benzina €</label><input class="fi" id="t-ben" type="number" inputmode="decimal" placeholder="0"></div>
-    </div>
-    <div class="fg2">
-      <div class="fg"><label class="fl">Mat. anticipato €</label><input class="fi" id="t-mat" type="number" inputmode="decimal" placeholder="0"></div>
-      <div class="fg"><label class="fl">Già pagato €</label><input class="fi" id="t-pag" type="number" inputmode="decimal" placeholder="0"></div>
-    </div>
-    <div class="fg"><label class="fl">Cantiere</label><input class="fi" id="t-can"></div>
-    <div class="mft">
-      <button class="btn bx2" onclick="cm('m-tur')">Annulla</button>
-      <button class="btn bp" onclick="saveTur()">Salva</button>
-    </div>
+  <div class="fg2"><div class="fg"><label class="fl">Preventivo</label><input class="fi" id="l-pre" type="number" inputmode="decimal" placeholder="0"></div><div class="fg"><label class="fl">Incassato</label><input class="fi" id="l-inc" type="number" inputmode="decimal" placeholder="0" oninput="liveMarg()"></div></div>
+  <div class="sec" style="margin-top:4px">Tempistiche</div>
+  <div class="cbox">
+    <div class="fg2" style="margin-bottom:8px"><div><label class="fl">Data richiesta</label><input class="fi" id="l-dat" type="date"></div><div><label class="fl">Data conferma</label><input class="fi" id="l-dconf" type="date"></div></div>
+    <div class="fg2" style="margin-bottom:8px"><div><label class="fl">Inizio lavori</label><input class="fi" id="l-dinizio" type="date"></div><div><label class="fl">Fine stimata</label><input class="fi" id="l-dfine" type="date"></div></div>
+    <div class="fg2" style="margin-bottom:8px"><div><label class="fl">Fine reale</label><input class="fi" id="l-dreale" type="date"></div><div><label class="fl">Giorni stimati</label><input class="fi" id="l-gg" type="number" inputmode="numeric" placeholder="0"></div></div>
+    <div class="fg2"><div><label class="fl">Giorni reali</label><input class="fi" id="l-ggreali" type="number" inputmode="numeric" placeholder="0"></div><div><label class="fl">Gg imprevisti</label><input class="fi" id="l-ggimp" type="number" inputmode="numeric" placeholder="0"></div></div>
+    <div class="fg" style="margin-top:8px;margin-bottom:0"><label class="fl">Note imprevisti</label><textarea class="ft" id="l-imp" rows="2"></textarea></div>
   </div>
-</div>
-
-<!-- MODAL RIMBORSO -->
-<div id="m-rim" class="overlay" onclick="oc(event,'m-rim')">
-  <div class="modal">
-    <div class="mt" id="t-rim">+ Rimborso</div>
-    <div class="fg"><label class="fl">Persona</label><input class="fi" id="r-per"></div>
-    <div class="fg2">
-      <div class="fg"><label class="fl">Importo €</label><input class="fi" id="r-imp" type="number" inputmode="decimal"></div>
-      <div class="fg"><label class="fl">Data</label><input class="fi" id="r-dat" type="date"></div>
-    </div>
-    <div class="fg"><label class="fl">Categoria</label>
-      <select class="fs" id="r-cat"><option>Rimborso lavoro</option><option>Prestito personale</option><option>Altro</option></select>
-    </div>
-    <div class="fg"><label class="fl">Descrizione</label><textarea class="ft" id="r-des" rows="2"></textarea></div>
-    <div class="fg"><label class="fl">Scadenza (opz.)</label><input class="fi" id="r-sca" type="date"></div>
-    <div class="mft">
-      <button class="btn bx2" onclick="cm('m-rim')">Annulla</button>
-      <button class="btn bp" onclick="saveRim()">Salva</button>
-    </div>
-    <div id="r-del" style="margin-top:8px;display:none">
-      <button class="btn br" style="width:100%" onclick="doDelRim()">🗑 Elimina rimborso</button>
-    </div>
+  <div class="sec">Costi stimati</div>
+  <div class="ibox" style="margin-bottom:8px">I costi vengono aggiunti ai Movimenti come spese collegate automaticamente.</div>
+  <div class="cbox">
+    <div class="fg2" style="margin-bottom:8px"><div><label class="fl">Materiali</label><input class="fi" id="l-mat" type="number" inputmode="decimal" placeholder="0" oninput="liveMarg()"></div><div><label class="fl">Manodopera</label><input class="fi" id="l-mdo" type="number" inputmode="decimal" placeholder="0" oninput="liveMarg()"></div></div>
+    <div class="fg2" style="margin-bottom:8px"><div><label class="fl">Viaggi</label><input class="fi" id="l-via" type="number" inputmode="decimal" placeholder="0" oninput="liveMarg()"></div><div><label class="fl">Burocrazia</label><input class="fi" id="l-bur" type="number" inputmode="decimal" placeholder="0" oninput="liveMarg()"></div></div>
+    <div class="fg2"><div><label class="fl">Tasse/IVA</label><input class="fi" id="l-tas" type="number" inputmode="decimal" placeholder="0" oninput="liveMarg()"></div><div><label class="fl">Altro</label><input class="fi" id="l-alt" type="number" inputmode="decimal" placeholder="0" oninput="liveMarg()"></div></div>
+    <div style="margin-top:8px;padding-top:8px;border-top:1px solid #2a3348;display:flex;justify-content:space-between"><span style="font-size:13px;color:#6b7280">Tot. costi</span><span id="l-tc" style="font-weight:700;color:#e74c3c;font-size:13px">0</span></div>
+    <div style="margin-top:4px;display:flex;justify-content:space-between"><span style="font-size:13px;color:#6b7280">Margine stimato</span><span id="l-mg" style="font-weight:700;font-size:13px;color:#1abc9c">0</span></div>
   </div>
-</div>
-
-<!-- MODAL IMPORT -->
-<div id="m-imp" class="overlay ctr" onclick="oc(event,'m-imp')">
-  <div class="msm">
-    <div class="mt">Importa Backup</div>
-    <p style="color:#6b7280;font-size:13px;margin-bottom:14px">Come vuoi importare?</p>
-    <div style="display:flex;flex-direction:column;gap:8px">
-      <button class="btn br" onclick="doImport('replace')">🗑 Sostituisci tutto</button>
-      <button class="btn bp" onclick="doImport('merge')">➕ Aggiungi ai dati</button>
-      <button class="btn bx2" onclick="cm('m-imp')">Annulla</button>
-    </div>
+  <div class="fg"><label class="fl">Note</label><textarea class="ft" id="l-not" rows="2"></textarea></div>
+  <div class="fg">
+    <label class="fl">Allegati</label>
+    <div class="uzone" onclick="document.getElementById('l-fil').click()"><div style="font-size:12px;color:#4a5568">Tocca per allegare (max 3MB)</div></div>
+    <input type="file" id="l-fil" style="display:none" multiple accept="image/*,.pdf" onchange="hFiles(event)">
+    <div id="l-att"></div>
   </div>
-</div>
-
-<!-- MODAL CONFIRM -->
-<div id="m-cfm" class="overlay ctr" onclick="oc(event,'m-cfm')">
-  <div class="msm">
-    <div class="mt">Conferma</div>
-    <p id="cfm-msg" style="color:#6b7280;font-size:14px;margin-bottom:16px"></p>
-    <div style="display:flex;gap:8px">
-      <button class="btn bx2" onclick="cm('m-cfm')">Annulla</button>
-      <button class="btn br" onclick="doCfm()">Elimina</button>
-    </div>
-  </div>
-</div>
-
+  <div class="mft"><button class="btn bx2" onclick="cm('m-lav')">Annulla</button><button class="btn bp" onclick="saveLav()">Salva</button></div>
+  <div id="l-del" style="margin-top:8px;display:none"><button class="btn br" style="width:100%" onclick="doDelLav()">Elimina lavoro</button></div>
+</div></div>
+<!-- DETTAGLIO -->
+<div id="m-det" class="overlay" onclick="oc(event,'m-det')"><div class="modal" id="det-body"></div></div>
+<!-- AIUTANTE -->
+<div id="m-ait" class="overlay" onclick="oc(event,'m-ait')"><div class="modal">
+  <div class="mt" id="t-ait">+ Aiutante</div>
+  <div class="fg"><label class="fl">Nome</label><input class="fi" id="a-nom"></div>
+  <div class="fg"><label class="fl">Telefono</label><input class="fi" id="a-tel" type="tel"></div>
+  <div class="fg2"><div class="fg"><label class="fl">Tariffa giornata</label><input class="fi" id="a-gio" type="number" inputmode="decimal"></div><div class="fg"><label class="fl">Tariffa mezza g.</label><input class="fi" id="a-mez" type="number" inputmode="decimal"></div></div>
+  <div class="mft"><button class="btn bx2" onclick="cm('m-ait')">Annulla</button><button class="btn bp" onclick="saveAit()">Salva</button></div>
+  <div id="a-del" style="margin-top:8px;display:none"><button class="btn br" style="width:100%" onclick="doDelAit()">Elimina aiutante</button></div>
+</div></div>
+<!-- TURNO -->
+<div id="m-tur" class="overlay" onclick="oc(event,'m-tur')"><div class="modal">
+  <div class="mt">+ Turno</div>
+  <div class="fg"><label class="fl">Aiutante</label><select class="fs" id="t-aid" onchange="fillB()"></select></div>
+  <div class="fg2"><div class="fg"><label class="fl">Data</label><input class="fi" id="t-dat" type="date"></div><div class="fg"><label class="fl">Tipo</label><select class="fs" id="t-tip" onchange="fillB()"><option value="giornata">Giornata</option><option value="mezza">Mezza g.</option><option value="personalizzato">Personalizzato</option></select></div></div>
+  <div class="fg"><label class="fl">Base</label><input class="fi" id="t-bas" type="number" inputmode="decimal"></div>
+  <div class="fg2"><div class="fg"><label class="fl">Pranzo</label><input class="fi" id="t-pra" type="number" inputmode="decimal" placeholder="0"></div><div class="fg"><label class="fl">Benzina</label><input class="fi" id="t-ben" type="number" inputmode="decimal" placeholder="0"></div></div>
+  <div class="fg2"><div class="fg"><label class="fl">Mat. anticipato</label><input class="fi" id="t-mat" type="number" inputmode="decimal" placeholder="0"></div><div class="fg"><label class="fl">Gia pagato</label><input class="fi" id="t-pag" type="number" inputmode="decimal" placeholder="0"></div></div>
+  <div class="fg"><label class="fl">Cantiere</label><input class="fi" id="t-can"></div>
+  <div class="mft"><button class="btn bx2" onclick="cm('m-tur')">Annulla</button><button class="btn bp" onclick="saveTur()">Salva</button></div>
+</div></div>
+<!-- CLIENTE -->
+<div id="m-cli" class="overlay" onclick="oc(event,'m-cli')"><div class="modal">
+  <div class="mt" id="t-cli">+ Cliente</div>
+  <div class="fg2"><div class="fg"><label class="fl">Nome</label><input class="fi" id="cli-nom" placeholder="Es. Rossi Mario"></div><div class="fg"><label class="fl">Telefono</label><input class="fi" id="cli-tel" type="tel"></div></div>
+  <div class="fg2"><div class="fg"><label class="fl">Zona</label><input class="fi" id="cli-zon"></div><div class="fg"><label class="fl">Come ti ha trovato</label><select class="fs" id="cli-src"><option value="passaparola">Passaparola</option><option value="gia cliente">Gia cliente</option><option value="social">Social</option><option value="volantino">Volantino</option><option value="web">Web</option><option value="altro">Altro</option></select></div></div>
+  <div class="fg"><label class="fl">Email (opz.)</label><input class="fi" id="cli-email" type="email"></div>
+  <div class="fg"><label class="fl">Affidabilita pagamento</label><select class="fs" id="cli-pag"><option value="ottima">Ottima - paga subito</option><option value="buona">Buona - paga regolare</option><option value="lenta">Lenta - bisogna sollecitare</option><option value="problematica">Problematica</option></select></div>
+  <div class="fg"><label class="fl">Note</label><textarea class="ft" id="cli-note" rows="2"></textarea></div>
+  <div class="mft"><button class="btn bx2" onclick="cm('m-cli')">Annulla</button><button class="btn bp" onclick="saveCli()">Salva</button></div>
+  <div id="cli-del" style="margin-top:8px;display:none"><button class="btn br" style="width:100%" onclick="doDelCli()">Elimina cliente</button></div>
+</div></div>
+<!-- RIMBORSO -->
+<div id="m-rim" class="overlay" onclick="oc(event,'m-rim')"><div class="modal">
+  <div class="mt" id="t-rim">+ Rimborso</div>
+  <div class="fg"><label class="fl">Persona</label><input class="fi" id="r-per"></div>
+  <div class="fg2"><div class="fg"><label class="fl">Importo</label><input class="fi" id="r-imp" type="number" inputmode="decimal"></div><div class="fg"><label class="fl">Data</label><input class="fi" id="r-dat" type="date"></div></div>
+  <div class="fg"><label class="fl">Categoria</label><select class="fs" id="r-cat"><option>Rimborso lavoro</option><option>Prestito personale</option><option>Altro</option></select></div>
+  <div class="fg"><label class="fl">Descrizione</label><textarea class="ft" id="r-des" rows="2"></textarea></div>
+  <div class="fg"><label class="fl">Scadenza (opz.)</label><input class="fi" id="r-sca" type="date"></div>
+  <div class="mft"><button class="btn bx2" onclick="cm('m-rim')">Annulla</button><button class="btn bp" onclick="saveRim()">Salva</button></div>
+  <div id="r-del" style="margin-top:8px;display:none"><button class="btn br" style="width:100%" onclick="doDelRim()">Elimina rimborso</button></div>
+</div></div>
+<!-- IMPORT -->
+<div id="m-imp" class="overlay ctr" onclick="oc(event,'m-imp')"><div class="msm">
+  <div class="mt">Importa Backup</div>
+  <p style="color:#6b7280;font-size:13px;margin-bottom:14px">Come vuoi importare?</p>
+  <div style="display:flex;flex-direction:column;gap:8px"><button class="btn br" onclick="doImport('replace')">Sostituisci tutto</button><button class="btn bp" onclick="doImport('merge')">Aggiungi ai dati</button><button class="btn bx2" onclick="cm('m-imp')">Annulla</button></div>
+</div></div>
+<!-- CONFIRM -->
+<div id="m-cfm" class="overlay ctr" onclick="oc(event,'m-cfm')"><div class="msm">
+  <div class="mt">Conferma</div>
+  <p id="cfm-msg" style="color:#6b7280;font-size:14px;margin-bottom:16px"></p>
+  <div style="display:flex;gap:8px"><button class="btn bx2" onclick="cm('m-cfm')">Annulla</button><button class="btn br" onclick="doCfm()">Elimina</button></div>
+</div></div>
 <div class="toast" id="toast"></div>
 <input type="file" id="imp-file" style="display:none" accept=".json" onchange="readImp(event)">
 
 <script>
-// ═══════════════════════
-// STORE
-// ═══════════════════════
-const KEY='miosistema_v4';
-let db={entrate:[],lavori:[],spese:[],aiutanti:[],turni:[],rimborsi:[]};
-let eid=null, curP='home', tmpF=[], pendI=null, cfmCB=null;
-let euF='tutto', rimF='tutti';
+var KEY='miosistema_v4';
+var db={entrate:[],lavori:[],spese:[],aiutanti:[],turni:[],rimborsi:[],clienti:[]};
+var eid=null,curP='home',tmpF=[],pendI=null,cfmCB=null;
+var euF='tutto',rimF='tutti',euMese='',homePeriod='mese',lavF='tutti';
 
 function load(){
-  try{const s=localStorage.getItem(KEY);if(s)db=JSON.parse(s);}catch(e){}
-  ['entrate','lavori','spese','aiutanti','turni','rimborsi'].forEach(k=>{if(!db[k])db[k]=[];});
-  // migra lavori vecchi senza costi object
-  db.lavori.forEach(l=>{if(!l.costi)l.costi={materiali:parseFloat(l.materiali)||0,manodopera:0,viaggi:0,burocrazia:0,tasse:0,altro:0};});
+  try{var s=localStorage.getItem(KEY);if(s)db=JSON.parse(s);}catch(e){}
+  ['entrate','lavori','spese','aiutanti','turni','rimborsi','clienti'].forEach(function(k){if(!db[k])db[k]=[];});
+  db.lavori.forEach(function(l){
+    if(!l.costi)l.costi={materiali:parseFloat(l.materiali)||0,manodopera:0,viaggi:0,burocrazia:0,tasse:0,altro:0};
+    if(!l.tempi)l.tempi={dataRichiesta:l.data||''};
+    if(!l.stato)l.stato='confermato';
+  });
 }
-function save(){
-  try{localStorage.setItem(KEY,JSON.stringify(db));}
-  catch(e){toast('⚠️ Storage pieno — riduci allegati','#e74c3c');}
-}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(db));}catch(e){toast('Storage pieno','#e74c3c');}}
 function uid(){return Date.now().toString(36)+Math.random().toString(36).substr(2,5);}
-
-// ═══════════════════════
-// FORMAT
-// ═══════════════════════
-function fe(n){n=parseFloat(n)||0;if(n===0)return'0€';return n.toLocaleString('it-IT',{minimumFractionDigits:0,maximumFractionDigits:2})+'€';}
-function fd(d){if(!d)return'—';return new Date(d+'T12:00:00').toLocaleDateString('it-IT');}
+function fe(n){n=parseFloat(n)||0;if(n===0)return'0';return n.toLocaleString('it-IT',{minimumFractionDigits:0,maximumFractionDigits:2})+'\u20ac';}
+function fd(d){if(!d)return'--';return new Date(d+'T12:00:00').toLocaleDateString('it-IT');}
 function td(){return new Date().toISOString().split('T')[0];}
-function isMese(d){if(!d)return false;const x=new Date(d+'T12:00:00'),n=new Date();return x.getFullYear()===n.getFullYear()&&x.getMonth()===n.getMonth();}
+function isMese(d){if(!d)return false;var x=new Date(d+'T12:00:00'),n=new Date();return x.getFullYear()===n.getFullYear()&&x.getMonth()===n.getMonth();}
 function isSett(d){
   if(!d)return false;
-  const x=new Date(d+'T12:00:00'),n=new Date();
-  const m=new Date(n);m.setDate(n.getDate()-((n.getDay()||7)-1));m.setHours(0,0,0,0);
-  const s=new Date(m);s.setDate(m.getDate()+6);s.setHours(23,59,59,999);
+  var x=new Date(d+'T12:00:00'),n=new Date();
+  var m=new Date(n);m.setDate(n.getDate()-((n.getDay()||7)-1));m.setHours(0,0,0,0);
+  var s=new Date(m);s.setDate(m.getDate()+6);s.setHours(23,59,59,999);
   return x>=m&&x<=s;
 }
 function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function esc2(s){return(s||'').replace(/"/g,'""');}
-function emp(icon,txt){return`<div class="empty"><div style="font-size:36px">${icon}</div><p>${txt}</p></div>`;}
-function toast(msg,col){const t=document.getElementById('toast');t.textContent=msg;t.style.borderColor=col||'#2a3348';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);}
+function emp(txt){return '<div class="empty"><p>'+txt+'</p></div>';}
+function toast(msg,col){var t=document.getElementById('toast');t.innerHTML=msg;t.style.borderColor=col||'#2a3348';t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);}
 
-// ═══════════════════════
-// COSTI LAVORO (solo per display, NON per bilancio)
-// ═══════════════════════
-function totCostiStimati(l){
-  const c=l.costi||{};
-  return(parseFloat(c.materiali)||0)+(parseFloat(c.manodopera)||0)+(parseFloat(c.viaggi)||0)+(parseFloat(c.burocrazia)||0)+(parseFloat(c.tasse)||0)+(parseFloat(c.altro)||0);
-}
-function margineStimato(l){return parseFloat(l.incassato||0)-totCostiStimati(l);}
-
-// Spese reali collegate a un lavoro (da db.spese)
-function speseRealiLav(lid){return db.spese.filter(s=>s.lavoroId===lid);}
-function totSpeseReali(lid){return speseRealiLav(lid).reduce((s,x)=>s+parseFloat(x.importo||0),0);}
-function margineReale(l){
-  const c=l.costi||{};
-  // Spese reali collegate (materiali documentati)
-  const spReali=totSpeseReali(l.id);
-  // Costi stimati NON materiali (manodopera, viaggi, burocrazia, tasse, altro)
-  // I materiali stimati NON si sommano perché li inserisci come spese reali
-  const costiExtra=(parseFloat(c.manodopera)||0)+(parseFloat(c.viaggi)||0)+(parseFloat(c.burocrazia)||0)+(parseFloat(c.tasse)||0)+(parseFloat(c.altro)||0);
-  return parseFloat(l.incassato||0)-spReali-costiExtra;
-}
-
+function totCS(l){var c=l.costi||{};return(parseFloat(c.materiali)||0)+(parseFloat(c.manodopera)||0)+(parseFloat(c.viaggi)||0)+(parseFloat(c.burocrazia)||0)+(parseFloat(c.tasse)||0)+(parseFloat(c.altro)||0);}
+function margS(l){return parseFloat(l.incassato||0)-totCS(l);}
+function spLav(lid){return db.spese.filter(function(s){return s.lavoroId===lid;});}
+function totSpLav(lid){return spLav(lid).reduce(function(s,x){return s+parseFloat(x.importo||0);},0);}
+function margR(l){return parseFloat(l.incassato||0)-totSpLav(l.id);}
 function liveMarg(){
-  const inc=parseFloat(document.getElementById('l-inc').value)||0;
-  const tc=(parseFloat(document.getElementById('l-mat').value)||0)+
-    (parseFloat(document.getElementById('l-mdo').value)||0)+
-    (parseFloat(document.getElementById('l-via').value)||0)+
-    (parseFloat(document.getElementById('l-bur').value)||0)+
-    (parseFloat(document.getElementById('l-tas').value)||0)+
-    (parseFloat(document.getElementById('l-alt').value)||0);
-  const mg=inc-tc;
-  document.getElementById('l-tc').textContent=fe(tc);
-  const el=document.getElementById('l-mg');el.textContent=fe(mg);el.style.color=mg>=0?'#1abc9c':'#e74c3c';
+  var inc=parseFloat(document.getElementById('l-inc').value)||0;
+  var tc=(parseFloat(document.getElementById('l-mat').value)||0)+(parseFloat(document.getElementById('l-mdo').value)||0)+(parseFloat(document.getElementById('l-via').value)||0)+(parseFloat(document.getElementById('l-bur').value)||0)+(parseFloat(document.getElementById('l-tas').value)||0)+(parseFloat(document.getElementById('l-alt').value)||0);
+  document.getElementById('l-tc').innerHTML=fe(tc);
+  var mel=document.getElementById('l-mg');mel.innerHTML=fe(inc-tc);mel.style.color=(inc-tc)>=0?'#1abc9c':'#e74c3c';
 }
-
-// ═══════════════════════
-// CALCOLI — fonte unica
-// ═══════════════════════
-// REGOLA CHIARA:
-// Entrate = entrate manuali (mance/bonus) + incassato lavori
-// Uscite  = db.spese (tutte, collegate o no ai lavori)
-// I costi stimati nei lavori sono SOLO informativi, non entrano nel bilancio
+function fnP(period){
+  var now=new Date();
+  if(period==='mese')return isMese;
+  if(period==='mese_scorso'){var y2=now.getMonth()===0?now.getFullYear()-1:now.getFullYear();var m2=now.getMonth()===0?11:now.getMonth()-1;return function(d){if(!d)return false;var x=new Date(d+'T12:00:00');return x.getFullYear()===y2&&x.getMonth()===m2;};}
+  if(period==='3mesi'){var from=new Date(now.getFullYear(),now.getMonth()-2,1);return function(d){if(!d)return false;return new Date(d+'T12:00:00')>=from;};}
+  if(period==='anno'){return function(d){if(!d)return false;return new Date(d+'T12:00:00').getFullYear()===now.getFullYear();};}
+  return function(d){return !!d;};
+}
 function calcP(fn){
-  const ent=db.entrate.filter(e=>fn(e.data)).reduce((s,e)=>s+parseFloat(e.importo||0),0);
-  const inc=db.lavori.filter(l=>fn(l.data)&&parseFloat(l.incassato||0)>0).reduce((s,l)=>s+parseFloat(l.incassato||0),0);
-  const totEnt=ent+inc;
-  const spNorm=db.spese.filter(s=>fn(s.data)&&s.categoria!=='Investimento').reduce((s,u)=>s+parseFloat(u.importo||0),0);
-  const inv=db.spese.filter(s=>fn(s.data)&&s.categoria==='Investimento').reduce((s,u)=>s+parseFloat(u.importo||0),0);
-  const utLordo=totEnt-spNorm;
-  const utNetto=utLordo-inv;
-  return{totEnt,ent,inc,spNorm,inv,utLordo,utNetto};
+  var ent=db.entrate.filter(function(e){return fn(e.data);}).reduce(function(s,e){return s+parseFloat(e.importo||0);},0);
+  var inc=db.lavori.filter(function(l){return fn(l.data)&&parseFloat(l.incassato||0)>0&&l.stato!=='lead'&&l.stato!=='preventivo';}).reduce(function(s,l){return s+parseFloat(l.incassato||0);},0);
+  var totEnt=ent+inc;
+  var spN=db.spese.filter(function(s){return fn(s.data)&&s.categoria!=='Investimento';}).reduce(function(s,u){return s+parseFloat(u.importo||0);},0);
+  var inv=db.spese.filter(function(s){return fn(s.data)&&s.categoria==='Investimento';}).reduce(function(s,u){return s+parseFloat(u.importo||0);},0);
+  return{totEnt:totEnt,spN:spN,inv:inv,utL:totEnt-spN,utN:totEnt-spN-inv};
 }
 function cMese(){return calcP(isMese);}
-function cAnno(y){return calcP(d=>{if(!d)return false;return new Date(d+'T12:00:00').getFullYear()===y;});}
-function debAit(aid){
-  return db.turni.filter(t=>t.aiutanteId===aid&&t.stato!=='pagato').reduce((s,t)=>
-    s+Math.max(0,(parseFloat(t.base||0)+parseFloat(t.pranzo||0)+parseFloat(t.benz||0)+parseFloat(t.mat||0))-parseFloat(t.pagato||0)),0);
-}
-function totDeb(){return db.aiutanti.reduce((s,a)=>s+debAit(a.id),0);}
-function rimAp(){return db.rimborsi.filter(r=>r.stato==='aperto').reduce((s,r)=>s+parseFloat(r.importo||0),0);}
+function cAnno(y){return calcP(function(d){if(!d)return false;return new Date(d+'T12:00:00').getFullYear()===y;});}
+function debAit(aid){return db.turni.filter(function(t){return t.aiutanteId===aid&&t.stato!=='pagato';}).reduce(function(s,t){return s+Math.max(0,(parseFloat(t.base||0)+parseFloat(t.pranzo||0)+parseFloat(t.benz||0)+parseFloat(t.mat||0))-parseFloat(t.pagato||0));},0);}
+function totDeb(){return db.aiutanti.reduce(function(s,a){return s+debAit(a.id);},0);}
+function rimAp(){return db.rimborsi.filter(function(r){return r.stato==='aperto';}).reduce(function(s,r){return s+parseFloat(r.importo||0);},0);}
+function mesiConDati(){var set={};db.entrate.concat(db.lavori).concat(db.spese).forEach(function(x){if(x.data)set[x.data.substr(0,7)]=1;});return Object.keys(set).sort().reverse();}
 
-// ═══════════════════════
-// NAV
-// ═══════════════════════
 function nav(p){
   curP=p;
-  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
-  document.querySelectorAll('.ni').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.page').forEach(function(x){x.classList.remove('active');});
+  document.querySelectorAll('.ni').forEach(function(x){x.classList.remove('on');});
   document.getElementById('page-'+p).classList.add('active');
-  document.querySelector(`.ni[data-p="${p}"]`).classList.add('on');
+  document.querySelector('.ni[data-p="'+p+'"]').classList.add('on');
   rend(p);
 }
 function rend(p){
-  if(p==='home') rHome();
-  else if(p==='eu') rEU();
-  else if(p==='lavori') rLavori();
-  else if(p==='aiutanti') rAiut();
-  else if(p==='rimborsi') rRim();
-  else if(p==='bilancio') rBil();
+  if(p==='home')rHome();
+  else if(p==='eu')rEU();
+  else if(p==='lavori')rLavori();
+  else if(p==='aiutanti')rAiut();
+  else if(p==='clienti')rClienti();
+  else if(p==='bilancio')rBil();
 }
-
-// ═══════════════════════
-// HOME
-// ═══════════════════════
-function rHome(){
-  const m=cMese();
-  const nLav=db.lavori.filter(l=>isMese(l.data)).length;
-  const ra=rimAp(), td2=totDeb();
-  const ult=[...db.lavori].sort((a,b)=>new Date(b.data+'T12:00:00')-new Date(a.data+'T12:00:00')).slice(0,3);
-  const ro=db.rimborsi.filter(r=>r.stato==='aperto').slice(0,3);
-  document.getElementById('c-home').innerHTML=`
-    <div class="sec">Questo mese</div>
-    <div class="g3">
-      <div class="st"><div class="sl">Entrate</div><div class="sv cg">${fe(m.totEnt)}</div></div>
-      <div class="st"><div class="sl">Uscite</div><div class="sv cr">${fe(m.spNorm+m.inv)}</div></div>
-      <div class="st"><div class="sl">Lavori</div><div class="sv cb">${nLav}</div></div>
-    </div>
-    <div class="g3">
-      <div class="st"><div class="sl">Utile lordo</div><div class="sv ${m.utLordo>=0?'cg':'cr'}">${fe(m.utLordo)}</div></div>
-      <div class="st"><div class="sl">Investim.</div><div class="sv co">${fe(m.inv)}</div></div>
-      <div class="st"><div class="sl">Utile netto</div><div class="sv ${m.utNetto>=0?'ct':'cr'}">${fe(m.utNetto)}</div></div>
-    </div>
-    ${ra>0||td2>0?`<div class="g2">
-      <div class="st tap" onclick="nav('rimborsi')"><div class="sl">Rimborsi aperti</div><div class="sv co">${fe(ra)}</div></div>
-      <div class="st tap" onclick="nav('aiutanti')"><div class="sl">Da pagare aiut.</div><div class="sv cr">${fe(td2)}</div></div>
-    </div>`:''}
-    <div class="sec">Ultimi 6 mesi</div>
-    <div class="cwrap">${rChart()}</div>
-    <div class="sec">Ultimi lavori</div>
-    ${ult.length?ult.map(l=>cLav(l)).join(''):emp('🔧','Nessun lavoro ancora')}
-    ${ro.length?`<div class="sec">Rimborsi aperti</div>`+ro.map(r=>`
-      <div class="item lo">
-        <div class="ir"><span class="it">${esc(r.persona)}</span><span class="ia cr">${fe(r.importo)}</span></div>
-        <div class="is">${r.categoria} · ${fd(r.data)}${r.scadenza?' · Scad: '+fd(r.scadenza):''}</div>
-      </div>`).join(''):''}
-  `;
-}
-
-function cLav(l){
-  const mr=margineReale(l);
-  const spColl=speseRealiLav(l.id);
-  const pc={'cash':'bg','bonifico':'bb','misto':'bo','in attesa':'bx'}[l.pagamento]||'bx';
-  const saldoAp=parseFloat(l.preventivo||0)-parseFloat(l.incassato||0);
-  return`<div class="item lg" onclick="openDet('${l.id}')">
-    <div class="ir"><span class="it">${esc(l.cliente)}</span><span class="ia cg">${fe(l.incassato)}</span></div>
-    <div class="is">${esc(l.tipo||'')}${l.zona?' · '+esc(l.zona):''} · ${fd(l.data)}</div>
-    <div class="itg">
-      <span class="bdg ${pc}">${l.pagamento}</span>
-      ${spColl.length?`<span style="font-size:11px;color:${mr>=0?'#1abc9c':'#e74c3c'}">Margine reale ${fe(mr)}</span>`:''}
-      ${saldoAp>0?`<span class="bdg bo">Saldo: ${fe(saldoAp)}</span>`:''}
-      ${spColl.length?`<span class="bdg bb">📎 ${spColl.length} spese</span>`:''}
-    </div>
-  </div>`;
-}
-
 function rChart(){
-  const now=new Date();
-  const months=[];
-  for(let i=5;i>=0;i--){const d=new Date(now.getFullYear(),now.getMonth()-i,1);months.push({y:d.getFullYear(),m:d.getMonth(),label:d.toLocaleDateString('it-IT',{month:'short'})});}
-  const data=months.map(({y,m,label})=>{
-    const fn=d=>{if(!d)return false;const x=new Date(d+'T12:00:00');return x.getFullYear()===y&&x.getMonth()===m;};
-    const r=calcP(fn);return{label,ent:r.totEnt,usc:r.spNorm+r.inv,utile:r.utLordo};
+  var now=new Date();var months=[];
+  for(var i=5;i>=0;i--){var d=new Date(now.getFullYear(),now.getMonth()-i,1);months.push({y:d.getFullYear(),m:d.getMonth(),label:d.toLocaleDateString('it-IT',{month:'short'})});}
+  var data=months.map(function(mo){
+    var fn=function(d){if(!d)return false;var x=new Date(d+'T12:00:00');return x.getFullYear()===mo.y&&x.getMonth()===mo.m;};
+    var r=calcP(fn);return{label:mo.label,ent:r.totEnt,usc:r.spN+r.inv,utile:r.utL};
   });
-  const maxV=Math.max(...data.flatMap(d=>[d.ent,d.usc,Math.abs(d.utile)]),100);
-  const W=310,H=110,bW=12,gX=48,pT=20;
-  let svg=`<svg viewBox="0 0 ${W} ${H+28}" style="width:100%;display:block">`;
-  [0,0.5,1].forEach(r=>{svg+=`<line x1="0" y1="${pT+(H-pT)*r}" x2="${W}" y2="${pT+(H-pT)*r}" stroke="#2a3348" stroke-width="0.5"/>`;});
-  data.forEach((d,i)=>{
-    const x=14+i*gX;
-    const eH=Math.max(2,(d.ent/maxV)*(H-pT)),uH=Math.max(2,(d.usc/maxV)*(H-pT)),utH=Math.max(2,(Math.abs(d.utile)/maxV)*(H-pT));
-    svg+=`<rect x="${x}" y="${H-eH}" width="${bW}" height="${eH}" fill="#2ecc71" rx="2.5"/>`;
-    svg+=`<rect x="${x+bW+2}" y="${H-uH}" width="${bW}" height="${uH}" fill="#e74c3c" rx="2.5"/>`;
-    svg+=`<rect x="${x+bW*2+4}" y="${H-utH}" width="${bW}" height="${utH}" fill="${d.utile>=0?'#1abc9c':'#e74c3c'}" rx="2.5" opacity=".8"/>`;
-    svg+=`<text x="${x+bW+1}" y="${H+13}" text-anchor="middle" font-size="9" fill="#4a5568">${d.label}</text>`;
+  var maxV=100;data.forEach(function(d){maxV=Math.max(maxV,d.ent,d.usc,Math.abs(d.utile));});
+  var W=310,H=110,bW=12,gX=48,pT=20;
+  var svg='<svg viewBox="0 0 '+W+' '+(H+28)+'" style="width:100%;display:block">';
+  [0,0.5,1].forEach(function(r){svg+='<line x1="0" y1="'+(pT+(H-pT)*r)+'" x2="'+W+'" y2="'+(pT+(H-pT)*r)+'" stroke="#2a3348" stroke-width="0.5"/>';});
+  data.forEach(function(d,i){
+    var x=14+i*gX,eH=Math.max(2,(d.ent/maxV)*(H-pT)),uH=Math.max(2,(d.usc/maxV)*(H-pT)),utH=Math.max(2,(Math.abs(d.utile)/maxV)*(H-pT));
+    svg+='<rect x="'+x+'" y="'+(H-eH)+'" width="'+bW+'" height="'+eH+'" fill="#2ecc71" rx="2.5"/>';
+    svg+='<rect x="'+(x+bW+2)+'" y="'+(H-uH)+'" width="'+bW+'" height="'+uH+'" fill="#e74c3c" rx="2.5"/>';
+    svg+='<rect x="'+(x+bW*2+4)+'" y="'+(H-utH)+'" width="'+bW+'" height="'+utH+'" fill="'+(d.utile>=0?'#1abc9c':'#e74c3c')+'" rx="2.5" opacity=".8"/>';
+    svg+='<text x="'+(x+bW+1)+'" y="'+(H+13)+'" text-anchor="middle" font-size="9" fill="#4a5568">'+d.label+'</text>';
   });
-  svg+=`<rect x="170" y="5" width="8" height="8" fill="#2ecc71" rx="1"/><text x="181" y="13" font-size="8.5" fill="#6b7280">Entr.</text>`;
-  svg+=`<rect x="208" y="5" width="8" height="8" fill="#e74c3c" rx="1"/><text x="219" y="13" font-size="8.5" fill="#6b7280">Usc.</text>`;
-  svg+=`<rect x="245" y="5" width="8" height="8" fill="#1abc9c" rx="1"/><text x="256" y="13" font-size="8.5" fill="#6b7280">Utile</text>`;
+  svg+='<rect x="170" y="5" width="8" height="8" fill="#2ecc71" rx="1"/><text x="181" y="13" font-size="8.5" fill="#6b7280">Entr.</text><rect x="208" y="5" width="8" height="8" fill="#e74c3c" rx="1"/><text x="219" y="13" font-size="8.5" fill="#6b7280">Usc.</text><rect x="245" y="5" width="8" height="8" fill="#1abc9c" rx="1"/><text x="256" y="13" font-size="8.5" fill="#6b7280">Utile</text>';
   return svg+'</svg>';
 }
+function cLav(l){
+  var mr=margR(l),saldoAp=parseFloat(l.preventivo||0)-parseFloat(l.incassato||0);
+  var isLead=l.stato==='lead'||l.stato==='preventivo';
+  var statoColor={lead:'#6b7280',preventivo:'#3b7dd8',confermato:'#2ecc71','in esecuzione':'#f39c12',completato:'#1abc9c',saldato:'#2ecc71'}[l.stato||'confermato']||'#6b7280';
+  var t=l.tempi||{};
+  var deltaGG=(t.giorniReali&&t.giorniStimati)?parseInt(t.giorniReali)-parseInt(t.giorniStimati):null;
+  var h='<div class="item '+(isLead?'lx':'lg')+'" onclick="openDet(\''+l.id+'\')"><div class="ir"><span class="it">'+esc(l.cliente)+'</span><span class="ia '+(isLead?'cx':'cg')+'">'+(isLead?fe(l.preventivo||0)+'*':fe(l.incassato))+'</span></div>';
+  h+='<div class="is">'+esc(l.tipo||'')+(l.zona?' - '+esc(l.zona):'')+' - '+fd(l.data)+'</div>';
+  h+='<div class="itg"><span style="font-size:11px;font-weight:700;color:'+statoColor+'">'+esc(l.stato||'confermato')+'</span>';
+  if(!isLead)h+='<span style="font-size:11px;color:'+(mr>=0?'#1abc9c':'#e74c3c')+'">Marg. '+fe(mr)+'</span>';
+  if(saldoAp>0&&!isLead)h+='<span class="bdg bo">Da inc. '+fe(saldoAp)+'</span>';
+  if(deltaGG!==null)h+='<span style="font-size:11px;color:'+(deltaGG>0?'#e74c3c':deltaGG<0?'#2ecc71':'#6b7280')+'">'+(deltaGG>0?'+'+deltaGG+'gg':deltaGG<0?Math.abs(deltaGG)+'gg ant.':'Nei tempi')+'</span>';
+  return h+'</div></div>';
+}
 
-// ═══════════════════════
-// MOVIMENTI
-// ═══════════════════════
+function rHome(){
+  var fn=fnP(homePeriod),m=calcP(fn),nLav=db.lavori.filter(function(l){return fn(l.data)&&l.stato!=='lead'&&l.stato!=='preventivo';}).length;
+  var ra=rimAp(),td2=totDeb();
+  var ult=[].concat(db.lavori).sort(function(a,b){return new Date(b.data+'T12:00:00')-new Date(a.data+'T12:00:00');}).slice(0,3);
+  var ro=db.rimborsi.filter(function(r){return r.stato==='aperto';}).slice(0,3);
+  var periodi=[['mese','Questo mese'],['mese_scorso','Mese scorso'],['3mesi','Ultimi 3 mesi'],['anno','Quest anno'],['tutto','Tutto']];
+  var labelP='';periodi.forEach(function(p){if(p[0]===homePeriod)labelP=p[1];});
+  var h='<div class="fltrs" style="margin-top:2px">';
+  periodi.forEach(function(p){h+='<button class="fb'+(homePeriod===p[0]?' on':'')+'" onclick="setHP(\''+p[0]+'\')">'+p[1]+'</button>';});
+  h+='</div><div class="sec">'+labelP+'</div>';
+  h+='<div class="g3"><div class="st"><div class="sl">Entrate</div><div class="sv cg">'+fe(m.totEnt)+'</div></div><div class="st"><div class="sl">Uscite</div><div class="sv cr">'+fe(m.spN+m.inv)+'</div></div><div class="st"><div class="sl">Lavori</div><div class="sv cb">'+nLav+'</div></div></div>';
+  h+='<div class="g3"><div class="st"><div class="sl">Utile lordo</div><div class="sv '+(m.utL>=0?'cg':'cr')+'">'+fe(m.utL)+'</div></div><div class="st"><div class="sl">Investim.</div><div class="sv co">'+fe(m.inv)+'</div></div><div class="st"><div class="sl">Utile netto</div><div class="sv '+(m.utN>=0?'ct':'cr')+'">'+fe(m.utN)+'</div></div></div>';
+  if(ra>0||td2>0){h+='<div class="g2"><div class="st tap" onclick="nav(\'rimborsi\')"><div class="sl">Rimborsi aperti</div><div class="sv co">'+fe(ra)+'</div></div><div class="st tap" onclick="nav(\'aiutanti\')"><div class="sl">Da pagare</div><div class="sv cr">'+fe(td2)+'</div></div></div>';}
+  h+='<div class="sec">Ultimi 6 mesi</div><div class="cwrap">'+rChart()+'</div><div class="sec">Ultimi lavori</div>';
+  if(ult.length){ult.forEach(function(l){h+=cLav(l);});}else{h+=emp('Nessun lavoro ancora');}
+  if(ro.length){h+='<div class="sec">Rimborsi aperti</div>';ro.forEach(function(r){h+='<div class="item lo"><div class="ir"><span class="it">'+esc(r.persona)+'</span><span class="ia cr">'+fe(r.importo)+'</span></div><div class="is">'+r.categoria+' - '+fd(r.data)+'</div></div>';});}
+  document.getElementById('c-home').innerHTML=h;
+}
+function setHP(p){homePeriod=p;rHome();}
+function mkFiltri(){
+  var defs=[['tutto','Tutto'],['ent','Entrate'],['usc','Uscite'],['rim','Rimborsi'],['mese','Questo mese'],['sett','Questa sett.']];
+  var h='<div class="fltrs">';
+  for(var i=0;i<defs.length;i++){
+    var v=defs[i][0],l=defs[i][1];
+    var on=euF===v?' on':'';
+    h+='<button class="fb'+on+'" onclick="euFClick(this,'+JSON.stringify(v)+')">'+l+'</button>';
+  }
+  return h+'</div>';
+}
+function euFClick(btn,f){setEUF(f);}
 function rEU(){
-  let items=[];
-  db.entrate.forEach(e=>items.push({...e,_t:'ent',_src:'man'}));
-  db.lavori.filter(l=>parseFloat(l.incassato||0)>0).forEach(l=>items.push({
-    id:'_lav_'+l.id,_t:'ent',_src:'lav',
-    descrizione:l.cliente+(l.tipo?' – '+l.tipo:''),
-    importo:l.incassato,data:l.data,categoria:'Lavoro/Cantiere',_lid:l.id
-  }));
-  db.spese.forEach(s=>items.push({...s,_t:'usc'}));
-  if(euF==='ent') items=items.filter(i=>i._t==='ent');
-  else if(euF==='usc') items=items.filter(i=>i._t==='usc');
-  else if(euF==='mese') items=items.filter(i=>isMese(i.data));
-  else if(euF==='sett') items=items.filter(i=>isSett(i.data));
-  items.sort((a,b)=>new Date(b.data+'T12:00:00')-new Date(a.data+'T12:00:00'));
-  const m=cMese();
-  document.getElementById('c-eu').innerHTML=`
-    <div class="g3">
-      <div class="st"><div class="sl">Entrate</div><div class="sv cg" style="font-size:15px">${fe(m.totEnt)}</div></div>
-      <div class="st"><div class="sl">Uscite</div><div class="sv cr" style="font-size:15px">${fe(m.spNorm+m.inv)}</div></div>
-      <div class="st"><div class="sl">Saldo</div><div class="sv ${m.utNetto>=0?'ct':'cr'}" style="font-size:15px">${fe(m.utNetto)}</div></div>
-    </div>
-    <div class="ar">
-      <button class="btn bg2" onclick="openEnt()">+ Entrata extra</button>
-      <button class="btn br" onclick="openUsc()">+ Uscita</button>
-    </div>
-    <div class="fltrs">
-      ${[['tutto','Tutto'],['ent','Entrate'],['usc','Uscite'],['mese','Questo mese'],['sett','Questa sett.']].map(([v,l])=>`<button class="fb ${euF===v?'on':''}" onclick="setEUF('${v}')">${l}</button>`).join('')}
-    </div>
-    ${euF==='sett'&&!items.length?`<div class="info-box">Nessun movimento questa settimana. Prova il filtro "Questo mese".</div>`:''}
-    ${items.length?items.map(i=>{
+  var mesi=mesiConDati();
+  var items=[];
+  db.entrate.forEach(function(e){items.push({id:e.id,descrizione:e.descrizione,importo:e.importo,data:e.data,categoria:e.categoria,_t:'ent',_src:'man'});});
+  db.lavori.filter(function(l){return parseFloat(l.incassato||0)>0&&l.stato!=='lead'&&l.stato!=='preventivo';}).forEach(function(l){items.push({id:'_lav_'+l.id,_t:'ent',_src:'lav',descrizione:l.cliente+(l.tipo?' - '+l.tipo:''),importo:l.incassato,data:l.data,categoria:'Lavoro/Cantiere',_lid:l.id});});
+  db.spese.forEach(function(s){items.push({id:s.id,descrizione:s.descrizione,importo:s.importo,data:s.data,categoria:s.categoria,lavoroId:s.lavoroId,_t:'usc'});});
+  db.rimborsi.forEach(function(r){items.push({id:r.id,descrizione:r.persona+(r.descrizione?' - '+r.descrizione:''),importo:r.importo,data:r.data,categoria:r.categoria,stato:r.stato,_t:'rim'});});
+  if(euMese){
+    items=items.filter(function(i){return i.data&&i.data.substr(0,7)===euMese;});
+  } else {
+    if(euF==='ent')items=items.filter(function(i){return i._t==='ent';});
+    else if(euF==='usc')items=items.filter(function(i){return i._t==='usc';});
+    else if(euF==='rim')items=items.filter(function(i){return i._t==='rim';});
+    else if(euF==='mese')items=items.filter(function(i){return isMese(i.data);});
+    else if(euF==='sett')items=items.filter(function(i){return isSett(i.data);});
+  }
+  items.sort(function(a,b){return new Date(b.data+'T12:00:00')-new Date(a.data+'T12:00:00');});
+  var fnStats=euMese?function(d){return d&&d.substr(0,7)===euMese;}:isMese;
+  var stats=calcP(fnStats);
+  var h='';
+  h+='<div class="g3">';
+  h+='<div class="st"><div class="sl">Entrate</div><div class="sv cg" style="font-size:15px">'+fe(stats.totEnt)+'</div></div>';
+  h+='<div class="st"><div class="sl">Uscite</div><div class="sv cr" style="font-size:15px">'+fe(stats.spN+stats.inv)+'</div></div>';
+  h+='<div class="st"><div class="sl">Saldo</div><div class="sv '+(stats.utN>=0?'ct':'cr')+'" style="font-size:15px">'+fe(stats.utN)+'</div></div>';
+  h+='</div>';
+  h+='<div class="ar">';
+  h+='<button class="btn bg2" onclick="openEnt()" style="font-size:12px">+Entrata</button>';
+  h+='<button class="btn br" onclick="openUsc()" style="font-size:12px">+Uscita</button>';
+  h+='<button class="btn" style="background:#b8860b;color:#fff;font-size:12px" onclick="openRim()">+Rimborso</button>';
+  h+='</div>';
+  h+='<div class="fg" style="margin-bottom:10px">';
+  h+='<select class="fs" onchange="setEUMese(this.value)" style="font-size:13px">';
+  h+='<option value="">Filtra per mese</option>';
+  mesi.forEach(function(mo){
+    var parts=mo.split('-');
+    var label=new Date(parseInt(parts[0]),parseInt(parts[1])-1,1).toLocaleDateString('it-IT',{month:'long',year:'numeric'});
+    h+='<option value="'+mo+'"'+(euMese===mo?' selected':'')+'>'+label+'</option>';
+  });
+  h+='</select></div>';
+  if(!euMese){
+    h+='<div class="fltrs">';
+    h+=mkFiltri();
+    h+='</div>';
+  }
+  if(items.length){
+    items.forEach(function(i){
+      var iid=i.id;
       if(i._t==='ent'){
-        const isLav=i._src==='lav';
-        return`<div class="item lg" onclick="${isLav?`openDet('${i._lid}')`:`openEnt('${i.id}')`}">
-          <div class="ir"><span class="it">${esc(i.descrizione)}</span><span class="ia cg">+${fe(i.importo)}</span></div>
-          <div class="is">${esc(i.categoria)} · ${fd(i.data)}</div>
-          ${isLav?`<div class="itg"><span class="lnk">🔧 Lavoro — tocca per dettaglio</span></div>`:''}
-        </div>`;
-      }else{
-        const lav=i.lavoroId?db.lavori.find(l=>l.id===i.lavoroId):null;
-        return`<div class="item lr" onclick="openUsc('${i.id}')">
-          <div class="ir"><span class="it">${esc(i.descrizione)}</span><span class="ia cr">-${fe(i.importo)}</span></div>
-          <div class="is">${esc(i.categoria)} · ${fd(i.data)}</div>
-          ${lav?`<div class="itg"><span class="lnk">🔧 ${esc(lav.cliente)}</span></div>`:''}
-        </div>`;
+        var isLav=i._src==='lav';
+        var dest=isLav?'openDet(\''+i._lid+'\')':'openEnt(\''+iid+'\')';
+        h+='<div class="item lg" onclick="'+dest+'">';
+        h+='<div class="ir"><span class="it">'+esc(i.descrizione)+'</span><span class="ia cg">+'+fe(i.importo)+'</span></div>';
+        h+='<div class="is">'+esc(i.categoria)+' - '+fd(i.data)+'</div>';
+        if(isLav)h+='<div class="itg"><span class="lnk">Lavoro - tocca per dettaglio</span></div>';
+        h+='</div>';
+      } else if(i._t==='usc'){
+        var lav=i.lavoroId?db.lavori.find(function(l){return l.id===i.lavoroId;}):null;
+        var dest2='openUsc(\''+iid+'\')';
+        h+='<div class="item lr" onclick="'+dest2+'">';
+        h+='<div class="ir"><span class="it">'+esc(i.descrizione)+'</span><span class="ia cr">-'+fe(i.importo)+'</span></div>';
+        h+='<div class="is">'+esc(i.categoria)+' - '+fd(i.data)+'</div>';
+        if(lav)h+='<div class="itg"><span class="lnk">'+esc(lav.cliente)+'</span></div>';
+        h+='</div>';
+      } else if(i._t==='rim'){
+        var dest3='openRim(\''+iid+'\')';
+        h+='<div class="item lo" onclick="'+dest3+'">';
+        h+='<div class="ir"><span class="it">'+esc(i.descrizione)+'</span><span class="ia co">'+fe(i.importo)+'</span></div>';
+        h+='<div class="is">'+esc(i.categoria)+' - '+fd(i.data)+'</div>';
+        h+='<div class="itg"><span class="bdg bo">'+(i.stato==='aperto'?'Aperto':'Rientrato')+'</span>';
+        if(i.stato==='aperto'){
+          var dest4='chiudiRim(\''+iid+'\')';
+          h+='<button class="bsm" style="background:#2ecc71;color:#fff" onclick="event.stopPropagation();'+dest4+'">Rientrato</button>';
+        }
+        h+='</div></div>';
       }
-    }).join(''):euF!=='sett'?emp('💰','Nessuna voce'):''}
-  `;
-}
-function setEUF(f){euF=f;rEU();}
-
-// ═══════════════════════
-// LAVORI
-// ═══════════════════════
-function rLavori(){
-  const lavori=[...db.lavori].sort((a,b)=>new Date(b.data+'T12:00:00')-new Date(a.data+'T12:00:00'));
-  const totInc=lavori.reduce((s,l)=>s+parseFloat(l.incassato||0),0);
-  const totMR=lavori.reduce((s,l)=>s+margineReale(l),0);
-  const inAttesa=lavori.filter(l=>parseFloat(l.preventivo||0)>parseFloat(l.incassato||0)).reduce((s,l)=>s+(parseFloat(l.preventivo||0)-parseFloat(l.incassato||0)),0);
-  const percMargine=totInc>0?((totMR/totInc)*100).toFixed(1):0;
-
-  // Spese per categoria su tutti i lavori (spese reali collegate)
-  const catMap={};
-  db.spese.filter(s=>s.lavoroId).forEach(s=>{
-    if(!catMap[s.categoria])catMap[s.categoria]=0;
-    catMap[s.categoria]+=parseFloat(s.importo||0);
-  });
-  // Aggiungi manodopera/viaggi/burocrazia/tasse/altro dai costi stimati
-  db.lavori.forEach(l=>{
-    const c=l.costi||{};
-    [['Manodopera',c.manodopera],['Viaggi/Trasferte',c.viaggi],['Burocrazia',c.burocrazia],['Tasse/IVA',c.tasse],['Altro',c.altro]].forEach(([n,v])=>{
-      if(parseFloat(v||0)>0){if(!catMap[n])catMap[n]=0;catMap[n]+=parseFloat(v);}
     });
-  });
-  const catArr=Object.entries(catMap).sort((a,b)=>b[1]-a[1]);
-  const maxCat=Math.max(...catArr.map(c=>c[1]),1);
-  const colors=['#e74c3c','#f39c12','#3b7dd8','#9b59b6','#1abc9c','#e67e22','#16a085'];
-
-  // Top 3 lavori per margine reale
-  const topLav=[...lavori].sort((a,b)=>margineReale(b)-margineReale(a)).slice(0,3);
-  // Bottom 3 lavori (meno redditizi)
-  const botLav=[...lavori].sort((a,b)=>margineReale(a)-margineReale(b)).slice(0,3);
-
-  document.getElementById('c-lavori').innerHTML=`
-    <div class="sec">Riepilogo generale</div>
-    <div class="g2">
-      <div class="st"><div class="sl">Incassato tot.</div><div class="sv cg" style="font-size:15px">${fe(totInc)}</div></div>
-      <div class="st"><div class="sl">Da incassare</div><div class="sv co" style="font-size:15px">${fe(inAttesa)}</div></div>
-    </div>
-    <div class="g2">
-      <div class="st"><div class="sl">Margine reale tot.</div><div class="sv ${totMR>=0?'ct':'cr'}" style="font-size:15px">${fe(totMR)}</div></div>
-      <div class="st"><div class="sl">% margine medio</div><div class="sv ${parseFloat(percMargine)>=30?'cg':parseFloat(percMargine)>=15?'co':'cr'}" style="font-size:15px">${percMargine}%</div></div>
-    </div>
-
-    ${catArr.length?`
-    <div class="sec">Dove spendi sui lavori</div>
-    <div class="card">
-      ${catArr.map((c,i)=>`
-        <div style="margin-bottom:10px">
-          <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:3px">
-            <span>${esc(c[0])}</span><span style="color:#6b7280">${fe(c[1])}</span>
-          </div>
-          <div class="pw"><div class="pf" style="width:${(c[1]/maxCat*100).toFixed(1)}%;background:${colors[i%colors.length]}"></div></div>
-        </div>`).join('')}
-    </div>`:''}
-
-    ${topLav.length>1?`
-    <div class="sec">🏆 Lavori più redditizi</div>
-    ${topLav.map(l=>`
-      <div class="item lg" onclick="openDet('${l.id}')">
-        <div class="ir"><span class="it">${esc(l.cliente)}</span><span class="ia ct">${fe(margineReale(l))}</span></div>
-        <div class="is">${esc(l.tipo||'')} · ${fd(l.data)}</div>
-        <div class="itg"><span style="font-size:11px;color:#6b7280">Incassato ${fe(l.incassato)} · Margine ${totInc>0?((margineReale(l)/parseFloat(l.incassato||1))*100).toFixed(0):'0'}%</span></div>
-      </div>`).join('')}`:''}
-
-    ${botLav.length>1&&botLav[0].id!==topLav[0]?.id?`
-    <div class="sec">⚠️ Lavori meno redditizi</div>
-    ${botLav.filter(l=>!topLav.find(t=>t.id===l.id)).slice(0,2).map(l=>`
-      <div class="item lo" onclick="openDet('${l.id}')">
-        <div class="ir"><span class="it">${esc(l.cliente)}</span><span class="ia ${margineReale(l)>=0?'co':'cr'}">${fe(margineReale(l))}</span></div>
-        <div class="is">${esc(l.tipo||'')} · ${fd(l.data)}</div>
-        <div class="itg"><span style="font-size:11px;color:#6b7280">Incassato ${fe(l.incassato)} · Margine ${parseFloat(l.incassato||0)>0?((margineReale(l)/parseFloat(l.incassato))*100).toFixed(0):'0'}%</span></div>
-      </div>`).join('')}`:''}
-
-    <div class="sec">Tutti i lavori (${lavori.length})</div>
-    <button class="btn bp" style="width:100%;margin-bottom:12px" onclick="openLav()">+ Nuovo lavoro</button>
-    ${lavori.length?lavori.map(l=>cLav(l)).join(''):emp('🔧','Nessun lavoro')}
-  `;
+  } else {
+    h+=emp('Nessuna voce in questo periodo');
+  }
+  document.getElementById('c-eu').innerHTML=h;
 }
+function setEUF(f){euF=f;euMese='';rEU();}
+function setEUMese(m){euMese=m;euF='tutto';rEU();}
+function rLavori(){
+  var tutti=[].concat(db.lavori).sort(function(a,b){return new Date(b.data+'T12:00:00')-new Date(a.data+'T12:00:00');});
+  var attivi=tutti.filter(function(l){return l.stato!=='lead'&&l.stato!=='preventivo';});
+  var pipeline=tutti.filter(function(l){return l.stato==='lead'||l.stato==='preventivo';});
+  var shown=lavF==='pipeline'?pipeline:lavF==='tutti'?attivi:attivi.filter(function(l){return (l.stato||'confermato')===lavF;});
+  var totInc=attivi.reduce(function(s,l){return s+parseFloat(l.incassato||0);},0);
+  var totMR=attivi.reduce(function(s,l){return s+margR(l);},0);
+  var inAttesa=attivi.filter(function(l){return parseFloat(l.preventivo||0)>parseFloat(l.incassato||0);}).reduce(function(s,l){return s+(parseFloat(l.preventivo||0)-parseFloat(l.incassato||0));},0);
+  var h='<div class="g2"><div class="st"><div class="sl">Incassato tot.</div><div class="sv cg" style="font-size:15px">'+fe(totInc)+'</div></div><div class="st"><div class="sl">Da incassare</div><div class="sv co" style="font-size:15px">'+fe(inAttesa)+'</div></div></div>';
+  h+='<div class="g2"><div class="st"><div class="sl">Margine reale tot.</div><div class="sv ct" style="font-size:15px">'+fe(totMR)+'</div></div><div class="st"><div class="sl">Pipeline</div><div class="sv cb" style="font-size:15px">'+pipeline.length+' lav.</div></div></div>';
+  h+='<div class="fltrs">';[['tutti','Tutti'],['pipeline','Pipeline'],['confermato','Confermati'],['in esecuzione','In corso'],['completato','Completati'],['saldato','Saldati']].forEach(function(f){h+='<button class="fb'+(lavF===f[0]?' on':'')+'" onclick="setLavF(\''+f[0]+'\')">'+f[1]+'</button>';});h+='</div>';
+  h+='<button class="btn bp" style="width:100%;margin-bottom:12px" onclick="openLav()">+ Nuovo lavoro</button>';
+  if(shown.length){shown.forEach(function(l){h+=cLav(l);});}else{h+=emp('Nessun lavoro in questa categoria');}
+  document.getElementById('c-lavori').innerHTML=h;
+}
+function setLavF(f){lavF=f;rLavori();}
 
 function openDet(id){
-  const l=db.lavori.find(x=>x.id===id);if(!l)return;
-  const c=l.costi||{};
-  const tc=totCostiStimati(l), ms=margineStimato(l);
-  const spColl=speseRealiLav(id);
-  const totSp=spColl.reduce((s,x)=>s+parseFloat(x.importo||0),0);
-  const costiExtra=(parseFloat(c.manodopera)||0)+(parseFloat(c.viaggi)||0)+(parseFloat(c.burocrazia)||0)+(parseFloat(c.tasse)||0)+(parseFloat(c.altro)||0);
-  const mr=parseFloat(l.incassato||0)-totSp-costiExtra;
-  const saldoAp=parseFloat(l.preventivo||0)-parseFloat(l.incassato||0);
-  const pc={'cash':'bg','bonifico':'bb','misto':'bo','in attesa':'bx'}[l.pagamento]||'bx';
-  const costiR=[['Materiali',c.materiali],['Manodopera',c.manodopera],['Viaggi',c.viaggi],['Burocrazia',c.burocrazia],['Tasse/IVA',c.tasse],['Altro',c.altro]].filter(([,v])=>parseFloat(v||0)>0);
-  document.getElementById('det-body').innerHTML=`
-    <div class="mt">🔧 ${esc(l.cliente)}</div>
-    <div style="color:#4a5568;font-size:13px;margin-bottom:12px">${esc(l.tipo||'')}${l.zona?' · '+esc(l.zona):''} · ${fd(l.data)}</div>
-    <div class="sr"><span class="sl2">Pagamento</span><span class="bdg ${pc}">${l.pagamento}</span></div>
-    <div class="sr"><span class="sl2">Preventivo</span><span class="sv2">${fe(l.preventivo)}</span></div>
-    <div class="sr"><span class="sl2">Incassato</span><span class="sv2 cg">${fe(l.incassato)}</span></div>
-    ${saldoAp>0?`<div class="sr"><span class="sl2" style="color:#f39c12;font-weight:600">⚠️ Ancora da incassare</span><span class="sv2 co">${fe(saldoAp)}</span></div>`:''}
-    ${costiR.length?`
-    <hr class="dvd">
-    <div style="font-size:11px;font-weight:700;color:#4a5568;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px">Costi stimati</div>
-    ${costiR.map(([n,v])=>`<div class="sr"><span class="sl2">${n}</span><span class="sv2 cr">-${fe(v)}</span></div>`).join('')}
-    <div class="sr"><span class="sl2">Tot. costi stimati</span><span class="sv2 cr">-${fe(tc)}</span></div>
-    <div class="sr"><span class="sl2">Margine stimato</span><span class="sv2" style="color:${ms>=0?'#1abc9c':'#e74c3c'}">${fe(ms)}</span></div>`:''}
-    <hr class="dvd">
-    <div style="font-size:11px;font-weight:700;color:#4a5568;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px">Spese reali collegate (${spColl.length})</div>
-    ${spColl.length?spColl.map(s=>`
-      <div class="sr" onclick="cm('m-det');openUsc('${s.id}')" style="cursor:pointer">
-        <span class="sl2">${esc(s.descrizione)} <span style="font-size:11px">(${esc(s.categoria)})</span></span>
-        <span class="sv2 cr">-${fe(s.importo)}</span>
-      </div>`).join(''):`<div style="font-size:12px;color:#4a5568;padding:6px 0">Nessuna spesa collegata.<br>Aggiungi da Movimenti → + Uscita.</div>`}
-    <div class="sr" style="margin-top:4px;padding-top:4px">
-      <span class="sl2" style="font-weight:700;font-size:15px">📊 Margine reale</span>
-      <span class="sv2" style="font-size:18px;color:${mr>=0?'#1abc9c':'#e74c3c'}">${fe(mr)}</span>
-    </div>
-    <div style="font-size:11px;color:#4a5568;margin-top:4px;padding-bottom:4px">
-      Incassato ${fe(l.incassato)} − spese reali ${fe(totSp)}${costiExtra>0?' − manodopera/viaggi/altro '+fe(costiExtra):''}
-    </div>
-    ${l.note?`<div style="margin-top:10px;padding:10px;background:#0f1117;border-radius:8px;font-size:13px;color:#6b7280">${esc(l.note)}</div>`:''}
-    ${l.allegati&&l.allegati.length?`
-    <hr class="dvd">
-    <div style="font-size:11px;font-weight:700;color:#4a5568;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px">Allegati</div>
-    ${l.allegati.map(a=>`<div class="atch"><span>${esc(a.name)}</span><a href="${a.data}" download="${esc(a.name)}" style="color:#3b7dd8;font-size:12px;text-decoration:none">Scarica</a></div>`).join('')}`:''}
-    <div class="mft">
-      <button class="btn bx2" onclick="cm('m-det')">Chiudi</button>
-      <button class="btn bp" onclick="cm('m-det');openLav('${id}')">✏️ Modifica</button>
-    </div>
-    <div style="margin-top:8px">
-      <button class="btn br" style="width:100%" onclick="cfm('Eliminare il lavoro di ${esc(l.cliente)}?',()=>{db.lavori=db.lavori.filter(x=>x.id!=='${id}');save();cm('m-det');rend(curP);toast('Lavoro eliminato','#e74c3c');})">🗑 Elimina lavoro</button>
-    </div>
-  `;
-  om('m-det');
-}
-
-// ═══════════════════════
-// AIUTANTI
-// ═══════════════════════
-function rAiut(){
-  const turniR=[...db.turni].sort((a,b)=>new Date(b.data+'T12:00:00')-new Date(a.data+'T12:00:00')).slice(0,40);
-  document.getElementById('c-aiutanti').innerHTML=`
-    <div class="sec">Aiutanti</div>
-    ${db.aiutanti.length?db.aiutanti.map(a=>{
-      const d=debAit(a.id);
-      return`<div class="item ${d>0?'lr':'lg'}">
-        <div class="ir"><span class="it">${esc(a.nome)}</span><span class="ia ${d>0?'cr':'cg'}">${d>0?'-'+fe(d):'✓ In pari'}</span></div>
-        <div class="is">${esc(a.telefono||'—')} · Giornata ${fe(a.tariffa_giornata)} · Mezza ${fe(a.tariffa_mezza)}</div>
-        <div class="itg">
-          <button class="bsm" style="background:#2a3348;color:#e8eaf0" onclick="event.stopPropagation();openAit('${a.id}')">✏️ Modifica</button>
-          ${d>0?`<button class="bsm" style="background:#2ecc71;color:#fff" onclick="event.stopPropagation();pagaTutti('${a.id}')">Salda ${fe(d)}</button>`:''}
-        </div>
-      </div>`;
-    }).join(''):emp('👷','Nessun aiutante')}
-    <button class="btn bp" style="width:100%;margin:4px 0 18px" onclick="openAit()">+ Aiutante</button>
-    <div class="sec">Turni</div>
-    <button class="btn bx2" style="width:100%;margin-bottom:12px" onclick="openTur()">+ Aggiungi turno</button>
-    ${turniR.length?turniR.map(t=>{
-      const a=db.aiutanti.find(x=>x.id===t.aiutanteId);
-      const tot=parseFloat(t.base||0)+parseFloat(t.pranzo||0)+parseFloat(t.benz||0)+parseFloat(t.mat||0);
-      const resto=Math.max(0,tot-parseFloat(t.pagato||0));
-      return`<div class="item ${resto>0?'lo':'lx'}">
-        <div class="ir">
-          <span class="it">${a?esc(a.nome):'?'} — ${esc(t.tipo)}</span>
-          <span class="ia ${resto>0?'cr':'cx'}">${resto>0?'-'+fe(resto):'✓ Saldato'}</span>
-        </div>
-        <div class="is">${fd(t.data)}${t.cantiere?' · '+esc(t.cantiere):''}</div>
-        <div style="font-size:11px;color:#4a5568;margin-top:3px">Base ${fe(t.base)} + Pranzo ${fe(t.pranzo)} + Benz ${fe(t.benz)} + Mat ${fe(t.mat)} = ${fe(tot)}${parseFloat(t.pagato||0)>0?' (già pag. '+fe(t.pagato)+')':''}</div>
-        ${resto>0?`<div class="itg"><button class="bsm" style="background:#2ecc71;color:#fff" onclick="pagaTurno('${t.id}')">Salda questo turno</button></div>`:''}
-      </div>`;
-    }).join(''):emp('📋','Nessun turno')}
-  `;
-}
-
-// ═══════════════════════
-// RIMBORSI
-// ═══════════════════════
-function rRim(){
-  let items=[...db.rimborsi];
-  if(rimF==='aperto') items=items.filter(r=>r.stato==='aperto');
-  else if(rimF==='rientrato') items=items.filter(r=>r.stato==='rientrato');
-  items.sort((a,b)=>new Date(b.data+'T12:00:00')-new Date(a.data+'T12:00:00'));
-  const ta=rimAp(), na=db.rimborsi.filter(r=>r.stato==='aperto').length;
-  document.getElementById('c-rimborsi').innerHTML=`
-    <div class="g2">
-      <div class="st"><div class="sl">Tot. aperti</div><div class="sv co">${fe(ta)}</div></div>
-      <div class="st"><div class="sl">N. aperti</div><div class="sv cr">${na}</div></div>
-    </div>
-    <button class="btn bp" style="width:100%;margin-bottom:12px" onclick="openRim()">+ Rimborso</button>
-    <div class="fltrs">
-      ${[['tutti','Tutti'],['aperto','Aperti'],['rientrato','Rientrati']].map(([v,l])=>`<button class="fb ${rimF===v?'on':''}" onclick="setRimF('${v}')">${l}</button>`).join('')}
-    </div>
-    ${items.length?items.map(r=>`
-      <div class="item lo" onclick="openRim('${r.id}')">
-        <div class="ir"><span class="it">${esc(r.persona)}</span><span class="ia cr">${fe(r.importo)}</span></div>
-        <div class="is">${r.categoria} · ${fd(r.data)}${r.scadenza?' · Scad: '+fd(r.scadenza):''}</div>
-        ${r.descrizione?`<div style="font-size:12px;color:#4a5568;margin-top:3px">${esc(r.descrizione)}</div>`:''}
-        <div class="itg">
-          <span class="bdg ${r.stato==='aperto'?'br2':'bg'}">${r.stato}</span>
-          ${r.stato==='aperto'?`<button class="bsm" style="background:#2ecc71;color:#fff" onclick="event.stopPropagation();chiudiRim('${r.id}')">✓ Rientrato</button>`:''}
-        </div>
-      </div>`).join(''):emp('💸','Nessun rimborso')}
-  `;
-}
-function setRimF(f){rimF=f;rRim();}
-
-// ═══════════════════════
-// BILANCIO
-// ═══════════════════════
-function rBil(){
-  const y=new Date().getFullYear();
-  const ann=cAnno(y);
-  // Spese per categoria (solo db.spese, niente doppio conteggio)
-  const catMap={};
-  db.spese.filter(s=>{try{return new Date(s.data+'T12:00:00').getFullYear()===y;}catch(e){return false;}}).forEach(s=>{
-    if(!catMap[s.categoria])catMap[s.categoria]=0;
-    catMap[s.categoria]+=parseFloat(s.importo||0);
-  });
-  const catArr=Object.entries(catMap).sort((a,b)=>b[1]-a[1]);
-  const maxC=Math.max(...catArr.map(c=>c[1]),1);
-  const colors=['#3b7dd8','#2ecc71','#e74c3c','#f39c12','#1abc9c','#9b59b6','#e67e22','#16a085','#e91e63','#00bcd4'];
-  const now=new Date();
-  const mesiH=[];
-  for(let m=now.getMonth();m>=0;m--){
-    const fn=d=>{if(!d)return false;const x=new Date(d+'T12:00:00');return x.getFullYear()===y&&x.getMonth()===m;};
-    const r=calcP(fn);
-    if(r.totEnt===0&&r.spNorm===0&&r.inv===0)continue;
-    const ml=new Date(y,m,1).toLocaleDateString('it-IT',{month:'long'});
-    mesiH.push(`<div class="item lb" style="cursor:default">
-      <div class="ir"><span class="it" style="font-size:15px">${ml} ${y}</span><span class="ia ${r.utNetto>=0?'ct':'cr'}">${fe(r.utNetto)}</span></div>
-      <div style="margin-top:8px">
-        <div class="sr"><span class="sl2">Entrate (lav. + extra)</span><span class="sv2 cg">${fe(r.totEnt)}</span></div>
-        <div class="sr"><span class="sl2">Uscite</span><span class="sv2 cr">${fe(r.spNorm)}</span></div>
-        <div class="sr"><span class="sl2">Investimenti</span><span class="sv2 co">${fe(r.inv)}</span></div>
-        <div class="sr"><span class="sl2">Utile lordo</span><span class="sv2 ${r.utLordo>=0?'cg':'cr'}">${fe(r.utLordo)}</span></div>
-        <div class="sr"><span class="sl2" style="font-weight:700">Utile netto</span><span class="sv2 ${r.utNetto>=0?'ct':'cr'}">${fe(r.utNetto)}</span></div>
-      </div>
-    </div>`);
+  var l=db.lavori.find(function(x){return x.id===id;});if(!l)return;
+  var c=l.costi||{},t=l.tempi||{},tc=totCS(l),ms=margS(l);
+  var sp=spLav(id),totSp=sp.reduce(function(s,x){return s+parseFloat(x.importo||0);},0);
+  var mr=parseFloat(l.incassato||0)-totSp,saldoAp=parseFloat(l.preventivo||0)-parseFloat(l.incassato||0);
+  var costiR=[['Materiali',c.materiali],['Manodopera',c.manodopera],['Viaggi',c.viaggi],['Burocrazia',c.burocrazia],['Tasse/IVA',c.tasse],['Altro',c.altro]].filter(function(v){return parseFloat(v[1]||0)>0;});
+  var sc={lead:'#6b7280',preventivo:'#3b7dd8',confermato:'#2ecc71','in esecuzione':'#f39c12',completato:'#1abc9c',saldato:'#2ecc71'};
+  var statoColor=sc[l.stato||'confermato']||'#6b7280';
+  var cliReg=l.clienteId?db.clienti.find(function(x){return x.id===l.clienteId;}):null;
+  var deltaGG=(t.giorniReali&&t.giorniStimati)?parseInt(t.giorniReali)-parseInt(t.giorniStimati):null;
+  var h='<div class="mt">'+esc(l.cliente)+'</div>';
+  h+='<div style="color:#4a5568;font-size:13px;margin-bottom:8px">'+esc(l.tipo||'')+(l.zona?' - '+esc(l.zona):'')+' - '+fd(l.data)+'</div>';
+  h+='<div class="sr"><span class="sl2">Stato</span><span style="font-weight:700;color:'+statoColor+'">'+esc(l.stato||'confermato')+'</span></div>';
+  if(cliReg)h+='<div class="sr"><span class="sl2">In rubrica</span><span class="sv2">'+esc(cliReg.nome)+'</span></div>';
+  if(l.fonte)h+='<div class="sr"><span class="sl2">Fonte</span><span class="sv2">'+esc(l.fonte)+'</span></div>';
+  h+='<div class="sr"><span class="sl2">Preventivo</span><span class="sv2">'+fe(l.preventivo)+'</span></div>';
+  h+='<div class="sr"><span class="sl2">Incassato</span><span class="sv2 cg">'+fe(l.incassato)+'</span></div>';
+  if(saldoAp>0)h+='<div class="sr"><span class="sl2" style="color:#f39c12;font-weight:600">Da incassare</span><span class="sv2 co">'+fe(saldoAp)+'</span></div>';
+  if(t.dataRichiesta||t.dataConferma||t.dataInizio||t.giorniStimati){
+    h+='<hr class="dvd"><div style="font-size:11px;font-weight:700;color:#4a5568;text-transform:uppercase;margin-bottom:6px">Tempistiche</div>';
+    if(t.dataRichiesta)h+='<div class="sr"><span class="sl2">Richiesta</span><span class="sv2">'+fd(t.dataRichiesta)+'</span></div>';
+    if(t.dataConferma)h+='<div class="sr"><span class="sl2">Confermato</span><span class="sv2">'+fd(t.dataConferma)+'</span></div>';
+    if(t.dataInizio)h+='<div class="sr"><span class="sl2">Inizio</span><span class="sv2">'+fd(t.dataInizio)+'</span></div>';
+    if(t.dataFineStimata)h+='<div class="sr"><span class="sl2">Fine stimata</span><span class="sv2">'+fd(t.dataFineStimata)+'</span></div>';
+    if(t.dataFineReale)h+='<div class="sr"><span class="sl2">Fine reale</span><span class="sv2">'+fd(t.dataFineReale)+'</span></div>';
+    if(t.giorniStimati)h+='<div class="sr"><span class="sl2">Giorni stimati</span><span class="sv2">'+t.giorniStimati+' gg</span></div>';
+    if(t.giorniReali)h+='<div class="sr"><span class="sl2">Giorni reali</span><span class="sv2">'+t.giorniReali+' gg</span></div>';
+    if(deltaGG!==null)h+='<div class="sr"><span class="sl2">Scostamento</span><span class="sv2" style="color:'+(deltaGG>0?'#e74c3c':deltaGG<0?'#2ecc71':'#6b7280')+'">'+(deltaGG>0?'+'+deltaGG+' gg ritardo':deltaGG<0?Math.abs(deltaGG)+' gg anticipato':'Nei tempi')+'</span></div>';
+    if(t.giorniImprevisti)h+='<div class="sr"><span class="sl2">Imprevisti</span><span class="sv2 cr">+'+t.giorniImprevisti+' gg</span></div>';
+    if(t.noteImprevisti)h+='<div style="font-size:12px;color:#6b7280;padding:6px 0;border-bottom:1px solid #2a3348">'+esc(t.noteImprevisti)+'</div>';
   }
-  document.getElementById('c-bilancio').innerHTML=`
-    <div class="sec">Anno ${y} — Totale</div>
-    <div class="item lb" style="cursor:default">
-      <div class="sr"><span class="sl2">Entrate totali</span><span class="sv2 cg">${fe(ann.totEnt)}</span></div>
-      <div class="sr"><span class="sl2">Uscite totali</span><span class="sv2 cr">${fe(ann.spNorm)}</span></div>
-      <div class="sr"><span class="sl2">Investimenti</span><span class="sv2 co">${fe(ann.inv)}</span></div>
-      <div class="sr"><span class="sl2">Utile lordo</span><span class="sv2 ${ann.utLordo>=0?'cg':'cr'}">${fe(ann.utLordo)}</span></div>
-      <div class="sr"><span class="sl2" style="font-weight:700;font-size:15px">Utile netto</span><span class="sv2" style="font-size:20px;color:${ann.utNetto>=0?'#1abc9c':'#e74c3c'}">${fe(ann.utNetto)}</span></div>
-    </div>
-    ${catArr.length?`<div class="sec">Spese per categoria</div>
-    <div class="card">
-      ${catArr.map((c,i)=>`<div style="margin-bottom:10px">
-        <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:3px"><span>${esc(c[0])}</span><span style="color:#6b7280">${fe(c[1])}</span></div>
-        <div class="pw"><div class="pf" style="width:${(c[1]/maxC*100).toFixed(1)}%;background:${colors[i%colors.length]}"></div></div>
-      </div>`).join('')}
-    </div>`:''}
-    <div class="sec">Storico mensile</div>
-    ${mesiH.length?mesiH.join(''):emp('📆','Nessun dato')}
-  `;
+  if(costiR.length){
+    h+='<hr class="dvd"><div style="font-size:11px;font-weight:700;color:#4a5568;text-transform:uppercase;margin-bottom:6px">Costi stimati</div>';
+    costiR.forEach(function(v){h+='<div class="sr"><span class="sl2">'+v[0]+'</span><span class="sv2 cr">-'+fe(v[1])+'</span></div>';});
+    h+='<div class="sr"><span class="sl2">Tot. stimati</span><span class="sv2 cr">-'+fe(tc)+'</span></div>';
+    h+='<div class="sr"><span class="sl2">Margine stimato</span><span class="sv2" style="color:'+(ms>=0?'#1abc9c':'#e74c3c')+'">'+fe(ms)+'</span></div>';
+  }
+  h+='<hr class="dvd"><div style="font-size:11px;font-weight:700;color:#4a5568;text-transform:uppercase;margin-bottom:6px">Spese collegate ('+sp.length+')</div>';
+  if(sp.length){sp.forEach(function(s){h+='<div class="sr" onclick="cm(\'m-det\');openUsc(\''+s.id+'\')" style="cursor:pointer"><span class="sl2">'+esc(s.descrizione)+(s._auto?' (auto)':'')+'</span><span class="sv2 cr">-'+fe(s.importo)+'</span></div>';});}
+  else{h+='<div style="font-size:12px;color:#4a5568;padding:6px 0">Nessuna spesa. Aggiungi da Movimenti.</div>';}
+  h+='<div class="sr" style="margin-top:4px"><span class="sl2" style="font-weight:700;font-size:15px">Margine reale</span><span class="sv2" style="font-size:18px;color:'+(mr>=0?'#1abc9c':'#e74c3c')+'">'+fe(mr)+'</span></div>';
+  h+='<div style="font-size:11px;color:#4a5568;margin-top:3px;padding-bottom:6px">'+fe(l.incassato)+' - spese '+fe(totSp)+'</div>';
+  if(l.note)h+='<div style="margin-top:8px;padding:10px;background:#0f1117;border-radius:8px;font-size:13px;color:#6b7280">'+esc(l.note)+'</div>';
+  if(l.allegati&&l.allegati.length){h+='<hr class="dvd"><div style="font-size:11px;font-weight:700;color:#4a5568;text-transform:uppercase;margin-bottom:6px">Allegati</div>';l.allegati.forEach(function(a){h+='<div class="atch"><span>'+esc(a.name)+'</span><a href="'+a.data+'" download="'+esc(a.name)+'" style="color:#3b7dd8;font-size:12px;text-decoration:none">Scarica</a></div>';});}
+  h+='<div class="mft"><button class="btn bx2" onclick="cm(\'m-det\')">Chiudi</button><button class="btn bp" onclick="cm(\'m-det\');openLav(\''+id+'\')">Modifica</button></div>';
+  h+='<div style="margin-top:8px"><button class="btn br" style="width:100%" onclick="delLavConf(\''+id+'\')">Elimina lavoro</button></div>';
+  document.getElementById('det-body').innerHTML=h;om('m-det');
+}
+function delLavConf(id){cfm('Eliminare il lavoro?',function(){db.lavori=db.lavori.filter(function(x){return x.id!==id;});db.spese=db.spese.filter(function(s){return !(s.lavoroId===id&&s._auto);});save();cm('m-det');rend(curP);toast('Lavoro eliminato','#e74c3c');});}
+
+function rAiut(){
+  var turniR=[].concat(db.turni).sort(function(a,b){return new Date(b.data+'T12:00:00')-new Date(a.data+'T12:00:00');}).slice(0,40);
+  var h='<div class="sec">Aiutanti</div>';
+  if(db.aiutanti.length){db.aiutanti.forEach(function(a){var d=debAit(a.id);h+='<div class="item '+(d>0?'lr':'lg')+'"><div class="ir"><span class="it">'+esc(a.nome)+'</span><span class="ia '+(d>0?'cr':'cg')+'">'+(d>0?'-'+fe(d):'In pari')+'</span></div><div class="is">'+(a.telefono||'-')+' - Giornata '+fe(a.tariffa_giornata)+' - Mezza '+fe(a.tariffa_mezza)+'</div><div class="itg"><button class="bsm" style="background:#2a3348;color:#e8eaf0" onclick="event.stopPropagation();openAit(\''+a.id+'\')">Modifica</button>'+(d>0?'<button class="bsm" style="background:#2ecc71;color:#fff" onclick="event.stopPropagation();pagaTutti(\''+a.id+'\')">Salda '+fe(d)+'</button>':'')+'</div></div>';});}
+  else{h+=emp('Nessun aiutante');}
+  h+='<button class="btn bp" style="width:100%;margin:4px 0 18px" onclick="openAit()">+ Aiutante</button>';
+  h+='<div class="sec">Turni</div><button class="btn bx2" style="width:100%;margin-bottom:12px" onclick="openTur()">+ Aggiungi turno</button>';
+  if(turniR.length){turniR.forEach(function(t){var a=db.aiutanti.find(function(x){return x.id===t.aiutanteId;});var tot=parseFloat(t.base||0)+parseFloat(t.pranzo||0)+parseFloat(t.benz||0)+parseFloat(t.mat||0);var resto=Math.max(0,tot-parseFloat(t.pagato||0));h+='<div class="item '+(resto>0?'lo':'lx')+'"><div class="ir"><span class="it">'+(a?esc(a.nome):'?')+' - '+esc(t.tipo)+'</span><span class="ia '+(resto>0?'cr':'cx')+'">'+(resto>0?'-'+fe(resto):'Saldato')+'</span></div><div class="is">'+fd(t.data)+(t.cantiere?' - '+esc(t.cantiere):'')+'</div><div style="font-size:11px;color:#4a5568;margin-top:3px">Base '+fe(t.base)+' Pranzo '+fe(t.pranzo)+' Benz '+fe(t.benz)+' Mat '+fe(t.mat)+' = '+fe(tot)+(parseFloat(t.pagato||0)>0?' (pag. '+fe(t.pagato)+')':'')+'</div>'+(resto>0?'<div class="itg"><button class="bsm" style="background:#2ecc71;color:#fff" onclick="pagaTurno(\''+t.id+'\')">Salda questo turno</button></div>':'')+'</div>';});}
+  else{h+=emp('Nessun turno');}
+  document.getElementById('c-aiutanti').innerHTML=h;
 }
 
-// ═══════════════════════
-// MODAL HELPERS
-// ═══════════════════════
+function rClienti(){
+  var h='',totInc=0;
+  var cs=[].concat(db.clienti).sort(function(a,b){return a.nome.localeCompare(b.nome);});
+  cs.forEach(function(c){var lavC=db.lavori.filter(function(l){return (l.clienteId===c.id||(!l.clienteId&&l.cliente===c.nome))&&l.stato!=='lead'&&l.stato!=='preventivo';});totInc+=lavC.reduce(function(s,l){return s+parseFloat(l.incassato||0);},0);});
+  h+='<div class="g3"><div class="st"><div class="sl">In rubrica</div><div class="sv cb">'+db.clienti.length+'</div></div><div class="st"><div class="sl">Tot. incassato</div><div class="sv cg" style="font-size:14px">'+fe(totInc)+'</div></div><div class="st"><div class="sl">Tot. lavori</div><div class="sv cb">'+db.lavori.length+'</div></div></div>';
+  h+='<button class="btn bp" style="width:100%;margin-bottom:12px" onclick="openCli()">+ Aggiungi cliente</button>';
+  cs.forEach(function(c){
+    var lavC=db.lavori.filter(function(l){return (l.clienteId===c.id||(!l.clienteId&&l.cliente===c.nome))&&l.stato!=='lead'&&l.stato!=='preventivo';});
+    var inc=lavC.reduce(function(s,l){return s+parseFloat(l.incassato||0);},0);
+    var mr=lavC.reduce(function(s,l){return s+margR(l);},0);
+    var perc=inc>0?((mr/inc)*100).toFixed(0):0;
+    var ult=[].concat(lavC).sort(function(a,b){return new Date(b.data+'T12:00:00')-new Date(a.data+'T12:00:00');})[0];
+    h+='<div class="item lb" onclick="openCli(\''+c.id+'\')">';
+    h+='<div class="ir"><span class="it">'+esc(c.nome)+'</span><span class="ia cg">'+fe(inc)+'</span></div>';
+    h+='<div class="is">'+(c.zona||'-')+' - '+esc(c.fonte||'')+' - '+esc(c.affidabilita||'')+'</div>';
+    h+='<div class="itg"><span style="font-size:11px;color:#6b7280">'+lavC.length+' lavori</span><span style="font-size:11px;color:'+(parseFloat(perc)>=30?'#1abc9c':parseFloat(perc)>=15?'#f39c12':'#e74c3c')+'">Marg. '+perc+'%</span>'+(ult?'<span style="font-size:11px;color:#4a5568">Ult. '+fd(ult.data)+'</span>':'')+'</div>';
+    if(c.telefono)h+='<div style="font-size:12px;color:#4a5568;margin-top:4px">'+esc(c.telefono)+'</div>';
+    h+='</div>';
+  });
+  var nomiR=new Set(db.clienti.map(function(c){return c.nome;}));
+  var idsR=new Set(db.clienti.map(function(c){return c.id;}));
+  var altriN=new Set();
+  db.lavori.filter(function(l){return !l.clienteId||!idsR.has(l.clienteId);}).forEach(function(l){if(!nomiR.has(l.cliente))altriN.add(l.cliente);});
+  if(altriN.size>0){h+='<div class="sec">Non in rubrica</div>';altriN.forEach(function(nome){var n=db.lavori.filter(function(l){return l.cliente===nome&&!l.clienteId;}).length;h+='<div class="item lx"><div class="ir"><span class="it">'+esc(nome)+'</span><span style="font-size:11px;color:#6b7280">'+n+' lavori</span></div><div class="itg"><button class="bsm bp" onclick="openCliNome(\''+nome.replace(/'/g,"\\'")+'\')" >+ Aggiungi a rubrica</button></div></div>';});}
+  document.getElementById('c-clienti').innerHTML=h;
+}
+
+function rBil(){
+  var y=new Date().getFullYear(),ann=cAnno(y);
+  var catMap={};
+  db.spese.filter(function(s){try{return new Date(s.data+'T12:00:00').getFullYear()===y;}catch(e){return false;}}).forEach(function(s){if(!catMap[s.categoria])catMap[s.categoria]=0;catMap[s.categoria]+=parseFloat(s.importo||0);});
+  var catArr=Object.entries(catMap).sort(function(a,b){return b[1]-a[1];});
+  var maxC=Math.max.apply(null,catArr.map(function(c){return c[1];}).concat([1]));
+  var colors=['#3b7dd8','#2ecc71','#e74c3c','#f39c12','#1abc9c','#9b59b6','#e67e22','#16a085'];
+  var now=new Date();
+  var h='<div class="sec">Anno '+y+'</div>';
+  h+='<div class="item lb" style="cursor:default"><div class="sr"><span class="sl2">Entrate totali</span><span class="sv2 cg">'+fe(ann.totEnt)+'</span></div><div class="sr"><span class="sl2">Uscite totali</span><span class="sv2 cr">'+fe(ann.spN)+'</span></div><div class="sr"><span class="sl2">Investimenti</span><span class="sv2 co">'+fe(ann.inv)+'</span></div><div class="sr"><span class="sl2">Utile lordo</span><span class="sv2 '+(ann.utL>=0?'cg':'cr')+'">'+fe(ann.utL)+'</span></div><div class="sr"><span class="sl2" style="font-weight:700;font-size:15px">Utile netto</span><span class="sv2" style="font-size:20px;color:'+(ann.utN>=0?'#1abc9c':'#e74c3c')+'">'+fe(ann.utN)+'</span></div></div>';
+  if(catArr.length){h+='<div class="sec">Spese per categoria</div><div class="card">';catArr.forEach(function(c,i){h+='<div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:3px"><span>'+esc(c[0])+'</span><span style="color:#6b7280">'+fe(c[1])+'</span></div><div class="pw"><div class="pf" style="width:'+((c[1]/maxC)*100).toFixed(1)+'%;background:'+colors[i%colors.length]+'"></div></div></div>';});h+='</div>';}
+  h+='<div class="sec">Storico mensile</div>';
+  var hasMesi=false;
+  for(var m=now.getMonth();m>=0;m--){
+    var fn=(function(mm){return function(d){if(!d)return false;var x=new Date(d+'T12:00:00');return x.getFullYear()===y&&x.getMonth()===mm;};})(m);
+    var r=calcP(fn);if(r.totEnt===0&&r.spN===0&&r.inv===0)continue;hasMesi=true;
+    var ml=new Date(y,m,1).toLocaleDateString('it-IT',{month:'long'});
+    h+='<div class="item lb" style="cursor:default"><div class="ir"><span class="it" style="font-size:15px">'+ml+' '+y+'</span><span class="ia '+(r.utN>=0?'ct':'cr')+'">'+fe(r.utN)+'</span></div><div style="margin-top:8px"><div class="sr"><span class="sl2">Entrate</span><span class="sv2 cg">'+fe(r.totEnt)+'</span></div><div class="sr"><span class="sl2">Uscite</span><span class="sv2 cr">'+fe(r.spN)+'</span></div><div class="sr"><span class="sl2">Investimenti</span><span class="sv2 co">'+fe(r.inv)+'</span></div><div class="sr"><span class="sl2" style="font-weight:700">Utile netto</span><span class="sv2 '+(r.utN>=0?'ct':'cr')+'">'+fe(r.utN)+'</span></div></div></div>';
+  }
+  if(!hasMesi)h+=emp('Nessun dato');
+  document.getElementById('c-bilancio').innerHTML=h;
+}
+
 function om(id){document.getElementById(id).classList.add('show');}
 function cm(id){document.getElementById(id).classList.remove('show');if(id!=='m-cfm')eid=null;}
 function oc(e,id){if(e.target===document.getElementById(id))cm(id);}
 function cfm(msg,cb){cfmCB=cb;document.getElementById('cfm-msg').textContent=msg;om('m-cfm');}
-function doCfm(){const cb=cfmCB;cfmCB=null;cm('m-cfm');if(cb)cb();}
+function doCfm(){var cb=cfmCB;cfmCB=null;cm('m-cfm');if(cb)cb();}
 
-// ENTRATA
 function openEnt(id){
-  eid=id||null;
-  const e=id?db.entrate.find(x=>x.id===id):null;
-  document.getElementById('t-ent').textContent=id?'✏️ Modifica entrata':'+ Entrata extra';
-  document.getElementById('e-desc').value=e?.descrizione||'';
-  document.getElementById('e-imp').value=e?.importo||'';
-  document.getElementById('e-data').value=e?.data||td();
-  document.getElementById('e-note').value=e?.note||'';
+  eid=id||null;var e=id?db.entrate.find(function(x){return x.id===id;}):null;
+  document.getElementById('t-ent').textContent=id?'Modifica entrata':'+ Entrata extra';
+  document.getElementById('e-desc').value=e?e.descrizione||'':'';
+  document.getElementById('e-imp').value=e?e.importo||'':'';
+  document.getElementById('e-data').value=e?e.data||td():td();
+  document.getElementById('e-note').value=e?e.note||'':'';
   document.getElementById('e-del').style.display=id?'block':'none';
-  setTimeout(()=>{document.getElementById('e-cat').value=e?.categoria||'Extra/Bonus';},0);
+  setTimeout(function(){document.getElementById('e-cat').value=e?e.categoria||'Extra/Bonus':'Extra/Bonus';},0);
   om('m-ent');
 }
 function saveEnt(){
-  const desc=document.getElementById('e-desc').value.trim();
-  const imp=parseFloat(document.getElementById('e-imp').value);
-  const data=document.getElementById('e-data').value;
-  if(!desc||!imp||!data){toast('⚠️ Compila tutti i campi','#e74c3c');return;}
-  const obj={id:eid||uid(),descrizione:desc,importo:imp,data,categoria:document.getElementById('e-cat').value,note:document.getElementById('e-note').value};
-  if(eid){const i=db.entrate.findIndex(x=>x.id===eid);if(i>=0)db.entrate[i]=obj;}
-  else db.entrate.push(obj);
-  save();cm('m-ent');rend(curP);toast('✅ Entrata salvata','#2ecc71');
+  var desc=document.getElementById('e-desc').value.trim(),imp=parseFloat(document.getElementById('e-imp').value),data=document.getElementById('e-data').value;
+  if(!desc||!imp||!data){toast('Compila tutti i campi','#e74c3c');return;}
+  var obj={id:eid||uid(),descrizione:desc,importo:imp,data:data,categoria:document.getElementById('e-cat').value,note:document.getElementById('e-note').value};
+  if(eid){var i=db.entrate.findIndex(function(x){return x.id===eid;});if(i>=0)db.entrate[i]=obj;}else db.entrate.push(obj);
+  save();cm('m-ent');rend(curP);toast('Entrata salvata','#2ecc71');
 }
-function doDelEnt(){
-  const id=eid;
-  cfm('Eliminare questa entrata?',()=>{
-    db.entrate=db.entrate.filter(x=>x.id!==id);
-    save();cm('m-ent');rend(curP);toast('Eliminata','#e74c3c');
-  });
-}
+function doDelEnt(){var id=eid;cfm('Eliminare?',function(){db.entrate=db.entrate.filter(function(x){return x.id!==id;});save();cm('m-ent');rend(curP);toast('Eliminata','#e74c3c');});}
 
-// USCITA
 function openUsc(id){
-  eid=id||null;
-  const u=id?db.spese.find(x=>x.id===id):null;
-  document.getElementById('t-usc').textContent=id?'✏️ Modifica uscita':'+ Uscita';
-  document.getElementById('u-desc').value=u?.descrizione||'';
-  document.getElementById('u-imp').value=u?.importo||'';
-  document.getElementById('u-data').value=u?.data||td();
-  document.getElementById('u-note').value=u?.note||'';
+  eid=id||null;var u=id?db.spese.find(function(x){return x.id===id;}):null;
+  document.getElementById('t-usc').textContent=id?'Modifica uscita':'+ Uscita';
+  document.getElementById('u-desc').value=u?u.descrizione||'':'';
+  document.getElementById('u-imp').value=u?u.importo||'':'';
+  document.getElementById('u-data').value=u?u.data||td():td();
+  document.getElementById('u-note').value=u?u.note||'':'';
   document.getElementById('u-del').style.display=id?'block':'none';
-  setTimeout(()=>{document.getElementById('u-cat').value=u?.categoria||'Carburante';},0);
-  const sel=document.getElementById('u-lav');
-  sel.innerHTML='<option value="">— Nessun lavoro —</option>'+
-    [...db.lavori].sort((a,b)=>new Date(b.data+'T12:00:00')-new Date(a.data+'T12:00:00'))
-    .map(l=>`<option value="${l.id}">${fd(l.data)} · ${esc(l.cliente)}${l.tipo?' · '+esc(l.tipo):''}</option>`).join('');
-  sel.value=u?.lavoroId||'';
+  setTimeout(function(){document.getElementById('u-cat').value=u?u.categoria||'Carburante':'Carburante';},0);
+  var sel=document.getElementById('u-lav');sel.innerHTML='<option value="">Nessun lavoro</option>';
+  [].concat(db.lavori).sort(function(a,b){return new Date(b.data+'T12:00:00')-new Date(a.data+'T12:00:00');}).forEach(function(l){var opt=document.createElement('option');opt.value=l.id;opt.textContent=fd(l.data)+' - '+l.cliente+(l.tipo?' - '+l.tipo:'');if(u&&u.lavoroId===l.id)opt.selected=true;sel.appendChild(opt);});
   om('m-usc');
 }
 function saveUsc(){
-  const desc=document.getElementById('u-desc').value.trim();
-  const imp=parseFloat(document.getElementById('u-imp').value);
-  const data=document.getElementById('u-data').value;
-  if(!desc||!imp||!data){toast('⚠️ Compila tutti i campi','#e74c3c');return;}
-  const obj={id:eid||uid(),descrizione:desc,importo:imp,data,categoria:document.getElementById('u-cat').value,note:document.getElementById('u-note').value,lavoroId:document.getElementById('u-lav').value||null};
-  if(eid){const i=db.spese.findIndex(x=>x.id===eid);if(i>=0)db.spese[i]=obj;}
-  else db.spese.push(obj);
-  save();cm('m-usc');rend(curP);toast('✅ Uscita salvata','#e74c3c');
+  var desc=document.getElementById('u-desc').value.trim(),imp=parseFloat(document.getElementById('u-imp').value),data=document.getElementById('u-data').value;
+  if(!desc||!imp||!data){toast('Compila tutti i campi','#e74c3c');return;}
+  var obj={id:eid||uid(),descrizione:desc,importo:imp,data:data,categoria:document.getElementById('u-cat').value,note:document.getElementById('u-note').value,lavoroId:document.getElementById('u-lav').value||null};
+  if(eid){var i=db.spese.findIndex(function(x){return x.id===eid;});if(i>=0)db.spese[i]=obj;}else db.spese.push(obj);
+  save();cm('m-usc');rend(curP);toast('Uscita salvata','#e74c3c');
 }
-function doDelUsc(){
-  const id=eid;
-  cfm('Eliminare questa uscita?',()=>{
-    db.spese=db.spese.filter(x=>x.id!==id);
-    save();cm('m-usc');rend(curP);toast('Eliminata','#e74c3c');
-  });
-}
+function doDelUsc(){var id=eid;cfm('Eliminare?',function(){db.spese=db.spese.filter(function(x){return x.id!==id;});save();cm('m-usc');rend(curP);toast('Eliminata','#e74c3c');});}
 
-// LAVORO
 function openLav(id){
-  eid=id||null;tmpF=[];
-  const l=id?db.lavori.find(x=>x.id===id):null;
-  const c=l?.costi||{};
-  document.getElementById('t-lav').textContent=id?'✏️ Modifica lavoro':'+ Lavoro';
-  document.getElementById('l-cli').value=l?.cliente||'';
-  document.getElementById('l-dat').value=l?.data||td();
-  document.getElementById('l-tip').value=l?.tipo||'';
-  document.getElementById('l-zon').value=l?.zona||'';
-  document.getElementById('l-pre').value=l?.preventivo||'';
-  document.getElementById('l-inc').value=l?.incassato||'';
-  document.getElementById('l-mat').value=c.materiali||'';
-  document.getElementById('l-mdo').value=c.manodopera||'';
-  document.getElementById('l-via').value=c.viaggi||'';
-  document.getElementById('l-bur').value=c.burocrazia||'';
-  document.getElementById('l-tas').value=c.tasse||'';
-  document.getElementById('l-alt').value=c.altro||'';
-  document.getElementById('l-not').value=l?.note||'';
+  eid=id||null;tmpF=[];var l=id?db.lavori.find(function(x){return x.id===id;}):null;
+  var c=l?l.costi||{}:{},t=l?l.tempi||{}:{};
+  document.getElementById('t-lav').textContent=id?'Modifica lavoro':'+ Lavoro';
+  var selCli=document.getElementById('l-cliid');selCli.innerHTML='<option value="">Seleziona dalla rubrica</option>';
+  [].concat(db.clienti).sort(function(a,b){return a.nome.localeCompare(b.nome);}).forEach(function(c2){var opt=document.createElement('option');opt.value=c2.id;opt.textContent=c2.nome+(c2.zona?' - '+c2.zona:'');if(l&&l.clienteId===c2.id)opt.selected=true;selCli.appendChild(opt);});
+  document.getElementById('l-cli').value=l?l.cliente||'':'';
+  document.getElementById('l-tip').value=l?l.tipo||'':'';
+  document.getElementById('l-zon').value=l?l.zona||'':'';
+  document.getElementById('l-not').value=l?l.note||'':'';
+  document.getElementById('l-pre').value=l?l.preventivo||'':'';
+  document.getElementById('l-inc').value=l?l.incassato||'':'';
+  document.getElementById('l-mat').value=c.materiali||'';document.getElementById('l-mdo').value=c.manodopera||'';
+  document.getElementById('l-via').value=c.viaggi||'';document.getElementById('l-bur').value=c.burocrazia||'';
+  document.getElementById('l-tas').value=c.tasse||'';document.getElementById('l-alt').value=c.altro||'';
+  document.getElementById('l-dat').value=t.dataRichiesta||l&&l.data||td();
+  document.getElementById('l-dconf').value=t.dataConferma||'';
+  document.getElementById('l-dinizio').value=t.dataInizio||'';
+  document.getElementById('l-dfine').value=t.dataFineStimata||'';
+  document.getElementById('l-dreale').value=t.dataFineReale||'';
+  document.getElementById('l-gg').value=t.giorniStimati||'';
+  document.getElementById('l-ggreali').value=t.giorniReali||'';
+  document.getElementById('l-ggimp').value=t.giorniImprevisti||'';
+  document.getElementById('l-imp').value=t.noteImprevisti||'';
   document.getElementById('l-del').style.display=id?'block':'none';
-  setTimeout(()=>{document.getElementById('l-pag').value=l?.pagamento||'cash';},0);
-  tmpF=l?.allegati?[...l.allegati]:[];
-  rAtt();liveMarg();
-  om('m-lav');
+  setTimeout(function(){document.getElementById('l-pag').value=l?l.pagamento||'cash':'cash';document.getElementById('l-stato').value=l?l.stato||'confermato':'confermato';document.getElementById('l-fonte').value=l?l.fonte||'':'';},0);
+  tmpF=l&&l.allegati?[].concat(l.allegati):[];rAtt();liveMarg();om('m-lav');
 }
+function onCliSel(){var id=document.getElementById('l-cliid').value;if(!id)return;var c=db.clienti.find(function(x){return x.id===id;});if(c){document.getElementById('l-cli').value=c.nome;if(!document.getElementById('l-zon').value)document.getElementById('l-zon').value=c.zona||'';}}
+function openCliDaLav(){cm('m-lav');setTimeout(function(){openCli();},100);}
 function saveLav(){
-  const cli=document.getElementById('l-cli').value.trim();
-  const dat=document.getElementById('l-dat').value;
-  if(!cli||!dat){toast('⚠️ Cliente e data obbligatori','#e74c3c');return;}
-  const obj={
-    id:eid||uid(),cliente:cli,tipo:document.getElementById('l-tip').value,data:dat,
-    zona:document.getElementById('l-zon').value,pagamento:document.getElementById('l-pag').value,
-    preventivo:parseFloat(document.getElementById('l-pre').value)||0,
-    incassato:parseFloat(document.getElementById('l-inc').value)||0,
-    costi:{
-      materiali:parseFloat(document.getElementById('l-mat').value)||0,
-      manodopera:parseFloat(document.getElementById('l-mdo').value)||0,
-      viaggi:parseFloat(document.getElementById('l-via').value)||0,
-      burocrazia:parseFloat(document.getElementById('l-bur').value)||0,
-      tasse:parseFloat(document.getElementById('l-tas').value)||0,
-      altro:parseFloat(document.getElementById('l-alt').value)||0
-    },
-    note:document.getElementById('l-not').value,allegati:[...tmpF]
-  };
-  if(eid){const i=db.lavori.findIndex(x=>x.id===eid);if(i>=0)db.lavori[i]=obj;}
-  else db.lavori.push(obj);
-  save();cm('m-lav');rend(curP);toast('✅ Lavoro salvato','#2ecc71');
+  var cli=document.getElementById('l-cli').value.trim(),dat=document.getElementById('l-dat').value;
+  if(!cli||!dat){toast('Cliente e data obbligatori','#e74c3c');return;}
+  var lavId=eid||uid(),stato=document.getElementById('l-stato').value;
+  var costi={materiali:parseFloat(document.getElementById('l-mat').value)||0,manodopera:parseFloat(document.getElementById('l-mdo').value)||0,viaggi:parseFloat(document.getElementById('l-via').value)||0,burocrazia:parseFloat(document.getElementById('l-bur').value)||0,tasse:parseFloat(document.getElementById('l-tas').value)||0,altro:parseFloat(document.getElementById('l-alt').value)||0};
+  var tempi={dataRichiesta:dat,dataConferma:document.getElementById('l-dconf').value||'',dataInizio:document.getElementById('l-dinizio').value||'',dataFineStimata:document.getElementById('l-dfine').value||'',dataFineReale:document.getElementById('l-dreale').value||'',giorniStimati:parseFloat(document.getElementById('l-gg').value)||0,giorniReali:parseFloat(document.getElementById('l-ggreali').value)||0,giorniImprevisti:parseFloat(document.getElementById('l-ggimp').value)||0,noteImprevisti:document.getElementById('l-imp').value||''};
+  var obj={id:lavId,cliente:cli,clienteId:document.getElementById('l-cliid').value||null,tipo:document.getElementById('l-tip').value,data:dat,zona:document.getElementById('l-zon').value,pagamento:document.getElementById('l-pag').value,stato:stato,fonte:document.getElementById('l-fonte').value||'',preventivo:parseFloat(document.getElementById('l-pre').value)||0,incassato:parseFloat(document.getElementById('l-inc').value)||0,costi:costi,tempi:tempi,note:document.getElementById('l-not').value,allegati:[].concat(tmpF)};
+  if(eid){var i=db.lavori.findIndex(function(x){return x.id===eid;});if(i>=0)db.lavori[i]=obj;}else db.lavori.push(obj);
+  db.spese=db.spese.filter(function(s){return !(s.lavoroId===lavId&&s._auto);});
+  var stati_attivi=['confermato','in esecuzione','completato','saldato'];
+  if(stati_attivi.indexOf(stato)>=0){
+    var voceCat={materiali:'Materiali lavoro',manodopera:'Manodopera',viaggi:'Viaggi/Trasferte',burocrazia:'Burocrazia',tasse:'Tasse/IVA',altro:'Altro'};
+    Object.keys(costi).forEach(function(k){if(parseFloat(costi[k])>0){db.spese.push({id:uid(),descrizione:voceCat[k]+' - '+cli,importo:parseFloat(costi[k]),data:dat,categoria:voceCat[k],note:'Auto da lavoro',lavoroId:lavId,_auto:true});}});
+  }
+  save();cm('m-lav');rend(curP);toast('Lavoro salvato','#2ecc71');
 }
-function doDelLav(){
-  const id=eid;
-  cfm('Eliminare questo lavoro?',()=>{
-    db.lavori=db.lavori.filter(x=>x.id!==id);
-    save();cm('m-lav');rend(curP);toast('Lavoro eliminato','#e74c3c');
-  });
-}
-function hFiles(e){
-  Array.from(e.target.files).forEach(f=>{
-    if(f.size>3*1024*1024){toast('⚠️ File max 3MB','#e74c3c');return;}
-    const r=new FileReader();r.onload=ev=>{tmpF.push({name:f.name,type:f.type,data:ev.target.result});rAtt();};r.readAsDataURL(f);
-  });e.target.value='';
-}
-function rAtt(){
-  document.getElementById('l-att').innerHTML=tmpF.map((a,i)=>`
-    <div class="atch"><span>${esc(a.name)}</span>
-    <button onclick="tmpF.splice(${i},1);rAtt()" style="background:none;border:none;color:#e74c3c;cursor:pointer;font-size:18px;padding:0 4px">×</button></div>`).join('');
-}
+function doDelLav(){var id=eid;cfm('Eliminare questo lavoro?',function(){db.lavori=db.lavori.filter(function(x){return x.id!==id;});db.spese=db.spese.filter(function(s){return !(s.lavoroId===id&&s._auto);});save();cm('m-lav');rend(curP);toast('Eliminato','#e74c3c');});}
+function hFiles(e){Array.from(e.target.files).forEach(function(f){if(f.size>3*1024*1024){toast('File max 3MB','#e74c3c');return;}var r=new FileReader();r.onload=function(ev){tmpF.push({name:f.name,type:f.type,data:ev.target.result});rAtt();};r.readAsDataURL(f);});e.target.value='';}
+function rAtt(){var h='';tmpF.forEach(function(a,i){h+='<div class="atch"><span>'+esc(a.name)+'</span><button onclick="tmpF.splice('+i+',1);rAtt()" style="background:none;border:none;color:#e74c3c;cursor:pointer;font-size:18px;padding:0 4px">x</button></div>';});document.getElementById('l-att').innerHTML=h;}
 
-// AIUTANTE
 function openAit(id){
-  eid=id||null;
-  const a=id?db.aiutanti.find(x=>x.id===id):null;
-  document.getElementById('t-ait').textContent=id?'✏️ Modifica':'+ Aiutante';
-  document.getElementById('a-nom').value=a?.nome||'';
-  document.getElementById('a-tel').value=a?.telefono||'';
-  document.getElementById('a-gio').value=a?.tariffa_giornata||'';
-  document.getElementById('a-mez').value=a?.tariffa_mezza||'';
-  document.getElementById('a-del').style.display=id?'block':'none';
-  om('m-ait');
+  eid=id||null;var a=id?db.aiutanti.find(function(x){return x.id===id;}):null;
+  document.getElementById('t-ait').textContent=id?'Modifica aiutante':'+ Aiutante';
+  document.getElementById('a-nom').value=a?a.nome||'':'';document.getElementById('a-tel').value=a?a.telefono||'':'';
+  document.getElementById('a-gio').value=a?a.tariffa_giornata||'':'';document.getElementById('a-mez').value=a?a.tariffa_mezza||'':'';
+  document.getElementById('a-del').style.display=id?'block':'none';om('m-ait');
 }
 function saveAit(){
-  const nome=document.getElementById('a-nom').value.trim();
-  if(!nome){toast('⚠️ Nome obbligatorio','#e74c3c');return;}
-  const obj={id:eid||uid(),nome,telefono:document.getElementById('a-tel').value,
-    tariffa_giornata:parseFloat(document.getElementById('a-gio').value)||0,
-    tariffa_mezza:parseFloat(document.getElementById('a-mez').value)||0};
-  if(eid){const i=db.aiutanti.findIndex(x=>x.id===eid);if(i>=0)db.aiutanti[i]=obj;}
-  else db.aiutanti.push(obj);
-  save();cm('m-ait');rAiut();toast('✅ Salvato','#2ecc71');
+  var nome=document.getElementById('a-nom').value.trim();if(!nome){toast('Nome obbligatorio','#e74c3c');return;}
+  var obj={id:eid||uid(),nome:nome,telefono:document.getElementById('a-tel').value,tariffa_giornata:parseFloat(document.getElementById('a-gio').value)||0,tariffa_mezza:parseFloat(document.getElementById('a-mez').value)||0};
+  if(eid){var i=db.aiutanti.findIndex(function(x){return x.id===eid;});if(i>=0)db.aiutanti[i]=obj;}else db.aiutanti.push(obj);
+  save();cm('m-ait');rAiut();toast('Salvato','#2ecc71');
 }
-function doDelAit(){
-  const id=eid;
-  cfm('Eliminare questo aiutante?',()=>{
-    db.aiutanti=db.aiutanti.filter(x=>x.id!==id);
-    db.turni=db.turni.filter(x=>x.aiutanteId!==id);
-    save();cm('m-ait');rAiut();toast('Eliminato','#e74c3c');
-  });
-}
-
-// TURNO
+function doDelAit(){var id=eid;cfm('Eliminare aiutante?',function(){db.aiutanti=db.aiutanti.filter(function(x){return x.id!==id;});db.turni=db.turni.filter(function(x){return x.aiutanteId!==id;});save();cm('m-ait');rAiut();toast('Eliminato','#e74c3c');});}
 function openTur(){
-  if(!db.aiutanti.length){toast('⚠️ Aggiungi prima un aiutante','#f39c12');return;}
-  document.getElementById('t-aid').innerHTML=db.aiutanti.map(a=>`<option value="${a.id}">${esc(a.nome)}</option>`).join('');
-  document.getElementById('t-dat').value=td();
-  document.getElementById('t-tip').value='giornata';
-  ['t-pra','t-ben','t-mat','t-pag','t-can'].forEach(id=>document.getElementById(id).value='');
+  if(!db.aiutanti.length){toast('Aggiungi prima un aiutante','#f39c12');return;}
+  var sel=document.getElementById('t-aid');sel.innerHTML='';
+  db.aiutanti.forEach(function(a){var opt=document.createElement('option');opt.value=a.id;opt.textContent=a.nome;sel.appendChild(opt);});
+  document.getElementById('t-dat').value=td();document.getElementById('t-tip').value='giornata';
+  ['t-pra','t-ben','t-mat','t-pag','t-can'].forEach(function(id){document.getElementById(id).value='';});
   fillB();om('m-tur');
 }
-function fillB(){
-  const aid=document.getElementById('t-aid').value;
-  const tip=document.getElementById('t-tip').value;
-  const a=db.aiutanti.find(x=>x.id===aid);if(!a)return;
-  document.getElementById('t-bas').value=tip==='giornata'?a.tariffa_giornata:tip==='mezza'?a.tariffa_mezza:'';
-}
+function fillB(){var aid=document.getElementById('t-aid').value,tip=document.getElementById('t-tip').value;var a=db.aiutanti.find(function(x){return x.id===aid;});if(!a)return;document.getElementById('t-bas').value=tip==='giornata'?a.tariffa_giornata:tip==='mezza'?a.tariffa_mezza:'';}
 function saveTur(){
-  const aid=document.getElementById('t-aid').value,dat=document.getElementById('t-dat').value;
-  if(!aid||!dat){toast('⚠️ Aiutante e data obbligatori','#e74c3c');return;}
-  db.turni.push({id:uid(),aiutanteId:aid,data:dat,tipo:document.getElementById('t-tip').value,
-    base:parseFloat(document.getElementById('t-bas').value)||0,
-    pranzo:parseFloat(document.getElementById('t-pra').value)||0,
-    benz:parseFloat(document.getElementById('t-ben').value)||0,
-    mat:parseFloat(document.getElementById('t-mat').value)||0,
-    pagato:parseFloat(document.getElementById('t-pag').value)||0,
-    cantiere:document.getElementById('t-can').value,stato:'aperto'});
-  save();cm('m-tur');rAiut();toast('✅ Turno aggiunto','#2ecc71');
+  var aid=document.getElementById('t-aid').value,dat=document.getElementById('t-dat').value;if(!aid||!dat){toast('Aiutante e data obbligatori','#e74c3c');return;}
+  db.turni.push({id:uid(),aiutanteId:aid,data:dat,tipo:document.getElementById('t-tip').value,base:parseFloat(document.getElementById('t-bas').value)||0,pranzo:parseFloat(document.getElementById('t-pra').value)||0,benz:parseFloat(document.getElementById('t-ben').value)||0,mat:parseFloat(document.getElementById('t-mat').value)||0,pagato:parseFloat(document.getElementById('t-pag').value)||0,cantiere:document.getElementById('t-can').value,stato:'aperto'});
+  save();cm('m-tur');rAiut();toast('Turno aggiunto','#2ecc71');
 }
-function pagaTurno(id){
-  const t=db.turni.find(x=>x.id===id);if(!t)return;
-  t.pagato=parseFloat(t.base||0)+parseFloat(t.pranzo||0)+parseFloat(t.benz||0)+parseFloat(t.mat||0);
-  t.stato='pagato';save();rAiut();toast('✅ Saldato','#2ecc71');
-}
-function pagaTutti(aid){
-  db.turni.filter(t=>t.aiutanteId===aid&&t.stato!=='pagato').forEach(t=>{
-    t.pagato=parseFloat(t.base||0)+parseFloat(t.pranzo||0)+parseFloat(t.benz||0)+parseFloat(t.mat||0);t.stato='pagato';
-  });
-  save();rAiut();toast('✅ Tutto saldato','#2ecc71');
-}
+function pagaTurno(id){var t=db.turni.find(function(x){return x.id===id;});if(!t)return;t.pagato=parseFloat(t.base||0)+parseFloat(t.pranzo||0)+parseFloat(t.benz||0)+parseFloat(t.mat||0);t.stato='pagato';save();rAiut();toast('Saldato','#2ecc71');}
+function pagaTutti(aid){db.turni.filter(function(t){return t.aiutanteId===aid&&t.stato!=='pagato';}).forEach(function(t){t.pagato=parseFloat(t.base||0)+parseFloat(t.pranzo||0)+parseFloat(t.benz||0)+parseFloat(t.mat||0);t.stato='pagato';});save();rAiut();toast('Tutto saldato','#2ecc71');}
 
-// RIMBORSO
+function openCli(id){
+  eid=id||null;var c=id?db.clienti.find(function(x){return x.id===id;}):null;
+  document.getElementById('t-cli').textContent=id?'Modifica cliente':'+ Cliente';
+  document.getElementById('cli-nom').value=c?c.nome||'':'';document.getElementById('cli-tel').value=c?c.telefono||'':'';
+  document.getElementById('cli-zon').value=c?c.zona||'':'';document.getElementById('cli-email').value=c?c.email||'':'';
+  document.getElementById('cli-note').value=c?c.note||'':'';
+  document.getElementById('cli-del').style.display=id?'block':'none';
+  setTimeout(function(){document.getElementById('cli-src').value=c?c.fonte||'passaparola':'passaparola';document.getElementById('cli-pag').value=c?c.affidabilita||'ottima':'ottima';},0);
+  om('m-cli');
+}
+function openCliNome(nome){openCli();document.getElementById('cli-nom').value=nome;}
+function saveCli(){
+  var nome=document.getElementById('cli-nom').value.trim();if(!nome){toast('Nome obbligatorio','#e74c3c');return;}
+  var obj={id:eid||uid(),nome:nome,telefono:document.getElementById('cli-tel').value,zona:document.getElementById('cli-zon').value,email:document.getElementById('cli-email').value,fonte:document.getElementById('cli-src').value,affidabilita:document.getElementById('cli-pag').value,note:document.getElementById('cli-note').value};
+  if(eid){var i=db.clienti.findIndex(function(x){return x.id===eid;});if(i>=0)db.clienti[i]=obj;}else db.clienti.push(obj);
+  save();cm('m-cli');rend(curP);toast('Cliente salvato','#2ecc71');
+}
+function doDelCli(){var id=eid;cfm('Eliminare cliente?',function(){db.clienti=db.clienti.filter(function(x){return x.id!==id;});save();cm('m-cli');rClienti();toast('Eliminato','#e74c3c');});}
+
 function openRim(id){
-  eid=id||null;
-  const r=id?db.rimborsi.find(x=>x.id===id):null;
-  document.getElementById('t-rim').textContent=id?'✏️ Modifica rimborso':'+ Rimborso';
-  document.getElementById('r-per').value=r?.persona||'';
-  document.getElementById('r-imp').value=r?.importo||'';
-  document.getElementById('r-dat').value=r?.data||td();
-  document.getElementById('r-des').value=r?.descrizione||'';
-  document.getElementById('r-sca').value=r?.scadenza||'';
+  eid=id||null;var r=id?db.rimborsi.find(function(x){return x.id===id;}):null;
+  document.getElementById('t-rim').textContent=id?'Modifica rimborso':'+ Rimborso';
+  document.getElementById('r-per').value=r?r.persona||'':'';document.getElementById('r-imp').value=r?r.importo||'':'';
+  document.getElementById('r-dat').value=r?r.data||td():td();document.getElementById('r-des').value=r?r.descrizione||'':'';
+  document.getElementById('r-sca').value=r?r.scadenza||'':'';
   document.getElementById('r-del').style.display=id?'block':'none';
-  setTimeout(()=>{document.getElementById('r-cat').value=r?.categoria||'Rimborso lavoro';},0);
-  om('m-rim');
+  setTimeout(function(){document.getElementById('r-cat').value=r?r.categoria||'Rimborso lavoro':'Rimborso lavoro';},0);om('m-rim');
 }
 function saveRim(){
-  const per=document.getElementById('r-per').value.trim();
-  const imp=parseFloat(document.getElementById('r-imp').value);
-  const dat=document.getElementById('r-dat').value;
-  if(!per||!imp||!dat){toast('⚠️ Compila tutti i campi','#e74c3c');return;}
-  const stato=eid?(db.rimborsi.find(x=>x.id===eid)?.stato||'aperto'):'aperto';
-  const obj={id:eid||uid(),persona:per,importo:imp,data:dat,categoria:document.getElementById('r-cat').value,
-    descrizione:document.getElementById('r-des').value,scadenza:document.getElementById('r-sca').value,stato};
-  if(eid){const i=db.rimborsi.findIndex(x=>x.id===eid);if(i>=0)db.rimborsi[i]=obj;}
-  else db.rimborsi.push(obj);
-  save();cm('m-rim');rRim();toast('✅ Rimborso salvato','#f39c12');
+  var per=document.getElementById('r-per').value.trim(),imp=parseFloat(document.getElementById('r-imp').value),dat=document.getElementById('r-dat').value;
+  if(!per||!imp||!dat){toast('Compila tutti i campi','#e74c3c');return;}
+  var statoEx=eid?db.rimborsi.find(function(x){return x.id===eid;}):null;
+  var obj={id:eid||uid(),persona:per,importo:imp,data:dat,categoria:document.getElementById('r-cat').value,descrizione:document.getElementById('r-des').value,scadenza:document.getElementById('r-sca').value,stato:statoEx?statoEx.stato:'aperto'};
+  if(eid){var i=db.rimborsi.findIndex(function(x){return x.id===eid;});if(i>=0)db.rimborsi[i]=obj;}else db.rimborsi.push(obj);
+  save();cm('m-rim');rend(curP);toast('Rimborso salvato','#f39c12');
 }
-function doDelRim(){
-  const id=eid;
-  cfm('Eliminare questo rimborso?',()=>{
-    db.rimborsi=db.rimborsi.filter(x=>x.id!==id);
-    save();cm('m-rim');rRim();toast('Eliminato','#e74c3c');
-  });
-}
-function chiudiRim(id){
-  const r=db.rimborsi.find(x=>x.id===id);
-  if(r){r.stato='rientrato';save();rRim();toast('✅ Rimborso chiuso','#2ecc71');}
-}
+function doDelRim(){var id=eid;cfm('Eliminare?',function(){db.rimborsi=db.rimborsi.filter(function(x){return x.id!==id;});save();cm('m-rim');rend(curP);toast('Eliminato','#e74c3c');});}
+function chiudiRim(id){var r=db.rimborsi.find(function(x){return x.id===id;});if(r){r.stato='rientrato';save();rend(curP);toast('Chiuso','#2ecc71');}}
 
-// ═══════════════════════
-// BACKUP & MIGRAZIONE
-// ═══════════════════════
-const CSMAP={materiali:'Materiali lavoro',carburante:'Carburante',benzina:'Carburante',investimento:'Investimento',vitto:'Vitto',svago:'Svago',salute:'Salute',casa:'Casa',abbigliamento:'Abbigliamento lavoro',telefonia:'Telefonia',assicurazioni:'Assicurazioni',attrezzatura:'Attrezzatura',formazione:'Formazione',regali:'Regali',banca:'Spese bancarie',software:'Software/Abbonamenti',vacanza:'Vacanza/Viaggi',auto:'Furgone/Auto',furgone:'Furgone/Auto',altro:'Altro',''  :'Altro'};
-const CEMAP={lavoro:'Lavoro/Cantiere',cantiere:'Lavoro/Cantiere',rimborso:'Rimborso ricevuto',bonus:'Extra/Bonus',extra:'Extra/Bonus',mancia:'Extra/Bonus',altro:'Altro',''  :'Altro'};
-function mcs(c){return CSMAP[(c||'').toLowerCase()]||'Altro';}
-function mce(c){return CEMAP[(c||'').toLowerCase()]||'Altro';}
-function mtt(t){const v=(t||'').toLowerCase();if(v==='giornata'||v==='full')return'giornata';if(v==='mezza'||v==='half')return'mezza';return'personalizzato';}
 function migrDB(d){
+  function mcs(c){var m={materiali:'Materiali lavoro',carburante:'Carburante',benzina:'Carburante',investimento:'Investimento',vitto:'Vitto',svago:'Svago',salute:'Salute',casa:'Casa',abbigliamento:'Abbigliamento lavoro',telefonia:'Telefonia',assicurazioni:'Assicurazioni',attrezzatura:'Attrezzatura',formazione:'Formazione',regali:'Regali',banca:'Spese bancarie',software:'Software/Abbonamenti',vacanza:'Vacanza/Viaggi',auto:'Furgone/Auto',furgone:'Furgone/Auto',manodopera:'Manodopera'};return m[(c||'').toLowerCase()]||'Altro';}
+  function mce(c){var m={lavoro:'Lavoro/Cantiere',cantiere:'Lavoro/Cantiere',rimborso:'Rimborso ricevuto',bonus:'Extra/Bonus',extra:'Extra/Bonus',mancia:'Extra/Bonus'};return m[(c||'').toLowerCase()]||'Altro';}
+  function mtt(t){var v=(t||'').toLowerCase();if(v==='giornata'||v==='full')return'giornata';if(v==='mezza'||v==='half')return'mezza';return'personalizzato';}
   return{
-    entrate:(d.entrate||[]).map(e=>({id:e.id||uid(),descrizione:e.desc||e.descrizione||'',importo:parseFloat(e.importo)||0,data:e.data||td(),categoria:e.cat?mce(e.cat):(e.categoria||'Altro'),note:e.note||''})),
-    lavori:(d.lavori||[]).map(l=>({id:l.id||uid(),cliente:l.cliente||l.desc||'',tipo:l.tipo||'',data:l.data||td(),zona:l.zona||'',pagamento:l.pagamento||l.metodo||'cash',preventivo:parseFloat(l.preventivo)||0,incassato:parseFloat(l.incassato)||0,costi:{materiali:parseFloat(l.materiali||l.costi?.materiali)||0,manodopera:parseFloat(l.costi?.manodopera)||0,viaggi:parseFloat(l.costi?.viaggi)||0,burocrazia:parseFloat(l.costi?.burocrazia)||0,tasse:parseFloat(l.costi?.tasse)||0,altro:parseFloat(l.costi?.altro)||0},note:l.note||'',allegati:l.allegati||[]})),
-    aiutanti:(d.aiutanti||[]).map(a=>({id:a.id||uid(),nome:a.nome||'',telefono:a.tel||a.telefono||'',tariffa_giornata:parseFloat(a.tg||a.tariffa_giornata)||0,tariffa_mezza:parseFloat(a.tm||a.tariffa_mezza)||0})),
-    turni:(d.turni||[]).map(t=>({id:t.id||uid(),aiutanteId:t.aid||t.aiutanteId||'',data:t.data||td(),tipo:mtt(t.tipo),base:parseFloat(t.base)||0,pranzo:parseFloat(t.pranzo)||0,benz:parseFloat(t.benz)||0,mat:parseFloat(t.mat)||0,pagato:parseFloat(t.pag||t.pagato)||0,cantiere:t.cant||t.cantiere||'',stato:(parseFloat(t.pag||t.pagato)||0)>0&&(parseFloat(t.pag||t.pagato)||0)>=(parseFloat(t.tot||t.base)||0)?'pagato':'aperto'})),
-    rimborsi:(d.rimborsi||[]).map(r=>({id:r.id||uid(),persona:r.persona||r.desc||'',importo:parseFloat(r.importo)||0,data:r.data||td(),categoria:r.categoria||'Rimborso lavoro',descrizione:r.descrizione||r.note||'',scadenza:r.scadenza||'',stato:r.stato||'aperto'})),
-    spese:(d.spese||d.uscite||[]).map(s=>({id:s.id||uid(),descrizione:s.desc||s.descrizione||'',importo:parseFloat(s.importo)||0,data:s.data||td(),categoria:s.cat?mcs(s.cat):(s.categoria||'Altro'),note:s.note||'',lavoroId:s.lavoroId||null}))
+    entrate:(d.entrate||[]).map(function(e){return{id:e.id||uid(),descrizione:e.desc||e.descrizione||'',importo:parseFloat(e.importo)||0,data:e.data||td(),categoria:e.cat?mce(e.cat):(e.categoria||'Altro'),note:e.note||''};}),
+    lavori:(d.lavori||[]).map(function(l){return{id:l.id||uid(),cliente:l.cliente||l.desc||'',clienteId:l.clienteId||null,tipo:l.tipo||'',data:l.data||td(),zona:l.zona||'',pagamento:l.pagamento||'cash',stato:l.stato||'confermato',fonte:l.fonte||'',preventivo:parseFloat(l.preventivo)||0,incassato:parseFloat(l.incassato)||0,costi:{materiali:parseFloat(l.materiali||(l.costi&&l.costi.materiali))||0,manodopera:parseFloat(l.costi&&l.costi.manodopera)||0,viaggi:parseFloat(l.costi&&l.costi.viaggi)||0,burocrazia:parseFloat(l.costi&&l.costi.burocrazia)||0,tasse:parseFloat(l.costi&&l.costi.tasse)||0,altro:parseFloat(l.costi&&l.costi.altro)||0},tempi:l.tempi||{dataRichiesta:l.data||td()},note:l.note||'',allegati:l.allegati||[]};}),
+    aiutanti:(d.aiutanti||[]).map(function(a){return{id:a.id||uid(),nome:a.nome||'',telefono:a.tel||a.telefono||'',tariffa_giornata:parseFloat(a.tg||a.tariffa_giornata)||0,tariffa_mezza:parseFloat(a.tm||a.tariffa_mezza)||0};}),
+    turni:(d.turni||[]).map(function(t){return{id:t.id||uid(),aiutanteId:t.aid||t.aiutanteId||'',data:t.data||td(),tipo:mtt(t.tipo),base:parseFloat(t.base)||0,pranzo:parseFloat(t.pranzo)||0,benz:parseFloat(t.benz)||0,mat:parseFloat(t.mat)||0,pagato:parseFloat(t.pag||t.pagato)||0,cantiere:t.cant||t.cantiere||'',stato:(parseFloat(t.pag||t.pagato)||0)>=(parseFloat(t.base||0))?'pagato':'aperto'};}),
+    rimborsi:(d.rimborsi||[]).map(function(r){return{id:r.id||uid(),persona:r.persona||r.desc||'',importo:parseFloat(r.importo)||0,data:r.data||td(),categoria:r.categoria||'Rimborso lavoro',descrizione:r.descrizione||r.note||'',scadenza:r.scadenza||'',stato:r.stato||'aperto'};}),
+    spese:(d.spese||d.uscite||[]).map(function(s){return{id:s.id||uid(),descrizione:s.desc||s.descrizione||'',importo:parseFloat(s.importo)||0,data:s.data||td(),categoria:s.cat?mcs(s.cat):(s.categoria||'Altro'),note:s.note||'',lavoroId:s.lavoroId||null};}),
+    clienti:(d.clienti||[]).map(function(c){return{id:c.id||uid(),nome:c.nome||'',telefono:c.telefono||'',zona:c.zona||'',email:c.email||'',fonte:c.fonte||'',affidabilita:c.affidabilita||'ottima',note:c.note||''};})
   };
 }
-function exportJSON(){
-  const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'});
-  const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`miosistema_${td()}.json`;a.click();URL.revokeObjectURL(url);
-  toast('💾 Backup scaricato','#2ecc71');
-}
+function exportJSON(){var blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'});var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='miosistema_'+td()+'.json';a.click();URL.revokeObjectURL(url);toast('Backup scaricato','#2ecc71');}
 function importBackup(){document.getElementById('imp-file').click();}
-function readImp(e){
-  const f=e.target.files[0];if(!f)return;
-  const r=new FileReader();
-  r.onload=ev=>{try{pendI=JSON.parse(ev.target.result);e.target.value='';om('m-imp');}catch(err){toast('⚠️ File non valido','#e74c3c');}};
-  r.readAsText(f);
-}
+function readImp(e){var f=e.target.files[0];if(!f)return;var r=new FileReader();r.onload=function(ev){try{pendI=JSON.parse(ev.target.result);e.target.value='';om('m-imp');}catch(err){toast('File non valido','#e74c3c');}};r.readAsText(f);}
 function doImport(mode){
   if(!pendI){cm('m-imp');return;}
-  const imp=migrDB(pendI);
+  var imp=migrDB(pendI);
   if(mode==='replace'){db=imp;}
-  else{['entrate','lavori','aiutanti','turni','rimborsi','spese'].forEach(k=>{const ids=new Set(db[k].map(x=>x.id));imp[k].forEach(x=>{if(!ids.has(x.id))db[k].push(x);});});}
-  const tot=Object.values(imp).reduce((s,a)=>s+a.length,0);
-  save();cm('m-imp');pendI=null;rend(curP);toast(`✅ Importati ${tot} record`,'#2ecc71');
+  else{['entrate','lavori','aiutanti','turni','rimborsi','spese','clienti'].forEach(function(k){var ids=new Set(db[k].map(function(x){return x.id;}));imp[k].forEach(function(x){if(!ids.has(x.id))db[k].push(x);});});}
+  var tot=Object.values(imp).reduce(function(s,a){return s+a.length;},0);
+  save();cm('m-imp');pendI=null;rend(curP);toast('Importati '+tot+' record','#2ecc71');
 }
 function exportCSV(){
-  let csv='=== ENTRATE EXTRA ===\r\nID,Descrizione,Importo,Data,Categoria,Note\r\n';
-  db.entrate.forEach(e=>csv+=`${e.id},"${esc2(e.descrizione)}",${e.importo||0},${e.data||''},"${esc2(e.categoria)}","${esc2(e.note)}"\r\n`);
-  csv+='\r\n=== LAVORI ===\r\nID,Cliente,Tipo,Data,Zona,Preventivo,Incassato,Mat.stimati,Manodopera,Viaggi,Burocrazia,Tasse,Altro,Pagamento,Note\r\n';
-  db.lavori.forEach(l=>{const c=l.costi||{};csv+=`${l.id},"${esc2(l.cliente)}","${esc2(l.tipo)}",${l.data||''},"${esc2(l.zona)}",${l.preventivo||0},${l.incassato||0},${c.materiali||0},${c.manodopera||0},${c.viaggi||0},${c.burocrazia||0},${c.tasse||0},${c.altro||0},"${esc2(l.pagamento)}","${esc2(l.note)}"\r\n`;});
-  csv+='\r\n=== SPESE/USCITE ===\r\nID,Descrizione,Importo,Data,Categoria,Lavoro collegato,Note\r\n';
-  db.spese.forEach(s=>{const lav=s.lavoroId?db.lavori.find(x=>x.id===s.lavoroId):null;csv+=`${s.id},"${esc2(s.descrizione)}",${s.importo||0},${s.data||''},"${esc2(s.categoria)}","${lav?esc2(lav.cliente):''}","${esc2(s.note)}"\r\n`;});
-  csv+='\r\n=== RIMBORSI ===\r\nID,Persona,Importo,Data,Categoria,Descrizione,Scadenza,Stato\r\n';
-  db.rimborsi.forEach(r=>csv+=`${r.id},"${esc2(r.persona)}",${r.importo||0},${r.data||''},"${esc2(r.categoria)}","${esc2(r.descrizione)}","${r.scadenza||''}","${r.stato||''}"\r\n`);
-  csv+='\r\n=== TURNI AIUTANTI ===\r\nID,Aiutante,Data,Tipo,Base,Pranzo,Benzina,Materiali,GiaPagato,Cantiere,Stato\r\n';
-  db.turni.forEach(t=>{const a=db.aiutanti.find(x=>x.id===t.aiutanteId);csv+=`${t.id},"${a?esc2(a.nome):''}",${t.data||''},"${esc2(t.tipo)}",${t.base||0},${t.pranzo||0},${t.benz||0},${t.mat||0},${t.pagato||0},"${esc2(t.cantiere)}","${t.stato||''}"\r\n`;});
-  const blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8'});
-  const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`miosistema_export_${td()}.csv`;a.click();URL.revokeObjectURL(url);
-  toast('📊 CSV esportato','#1abc9c');
+  var csv='=== ENTRATE ===\r\nID,Descrizione,Importo,Data,Categoria\r\n';
+  db.entrate.forEach(function(e){csv+=e.id+',"'+(e.descrizione||'').replace(/"/g,'""')+'",'+e.importo+','+e.data+',"'+e.categoria+'"\r\n';});
+  csv+='\r\n=== LAVORI ===\r\nID,Cliente,Tipo,Data,Stato,Preventivo,Incassato\r\n';
+  db.lavori.forEach(function(l){csv+=l.id+',"'+(l.cliente||'').replace(/"/g,'""')+'","'+(l.tipo||'').replace(/"/g,'""')+'",'+l.data+','+(l.stato||'')+','+l.preventivo+','+l.incassato+'\r\n';});
+  csv+='\r\n=== SPESE ===\r\nID,Descrizione,Importo,Data,Categoria,Lavoro\r\n';
+  db.spese.forEach(function(s){var lav=s.lavoroId?db.lavori.find(function(x){return x.id===s.lavoroId;}):null;csv+=s.id+',"'+(s.descrizione||'').replace(/"/g,'""')+'",'+s.importo+','+s.data+',"'+(s.categoria||'')+'","'+(lav?lav.cliente:'')+'"\r\n';});
+  csv+='\r\n=== RIMBORSI ===\r\nID,Persona,Importo,Data,Stato\r\n';
+  db.rimborsi.forEach(function(r){csv+=r.id+',"'+(r.persona||'').replace(/"/g,'""')+'",'+r.importo+','+r.data+','+(r.stato||'')+'\r\n';});
+  csv+='\r\n=== TURNI ===\r\nID,Aiutante,Data,Tipo,Base,Pranzo,Benz,Mat,Pagato,Cantiere\r\n';
+  db.turni.forEach(function(t){var a=db.aiutanti.find(function(x){return x.id===t.aiutanteId;});csv+=t.id+',"'+(a?a.nome:'')+'",'+(t.data||'')+',"'+(t.tipo||'')+'",'+t.base+','+t.pranzo+','+t.benz+','+t.mat+','+t.pagato+',"'+(t.cantiere||'')+'"\r\n';});
+  csv+='\r\n=== CLIENTI ===\r\nID,Nome,Telefono,Zona,Fonte,Affidabilita\r\n';
+  db.clienti.forEach(function(c){csv+=c.id+',"'+(c.nome||'').replace(/"/g,'""')+'","'+(c.telefono||'')+'","'+(c.zona||'')+'","'+(c.fonte||'')+'","'+(c.affidabilita||'')+'"\r\n';});
+  var blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8'});var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='miosistema_export_'+td()+'.csv';a.click();URL.revokeObjectURL(url);toast('CSV esportato','#1abc9c');
 }
-// AUTO-BACKUP
-const ABK='miosistema_ab',ABTS='miosistema_ab_ts';
-function autoBackup(){
-  const last=parseInt(localStorage.getItem(ABTS)||'0');
-  if(Date.now()-last>24*60*60*1000){try{localStorage.setItem(ABK,JSON.stringify(db));localStorage.setItem(ABTS,String(Date.now()));}catch(e){}}
+function exportAnalisi(){
+  var now=new Date(),y=now.getFullYear(),ann=cAnno(y);
+  var lavAttivi=db.lavori.filter(function(l){return l.stato!=='lead'&&l.stato!=='preventivo';});
+  var totMR=lavAttivi.reduce(function(s,l){return s+margR(l);},0),totInc=lavAttivi.reduce(function(s,l){return s+parseFloat(l.incassato||0);},0);
+  var mesiStats=[];
+  for(var m=0;m<=now.getMonth();m++){var fn=(function(mm){return function(d){if(!d)return false;var x=new Date(d+'T12:00:00');return x.getFullYear()===y&&x.getMonth()===mm;};})(m);var r=calcP(fn);var ml=new Date(y,m,1).toLocaleDateString('it-IT',{month:'long'});if(r.totEnt>0||r.spN>0)mesiStats.push({mese:ml,ent:r.totEnt,usc:r.spN+r.inv,utile:r.utN});}
+  var catMap={};db.spese.filter(function(s){try{return new Date(s.data+'T12:00:00').getFullYear()===y;}catch(e){return false;}}).forEach(function(s){if(!catMap[s.categoria])catMap[s.categoria]=0;catMap[s.categoria]+=parseFloat(s.importo||0);});
+  var lavSort=[].concat(lavAttivi).sort(function(a,b){return margR(b)-margR(a);});
+  var fe2=function(n){return(parseFloat(n)||0).toFixed(2)+'E';};
+  var txt='REPORT IL MIO SISTEMA - '+now.toLocaleDateString('it-IT')+'\n====================================\n';
+  txt+='ANNO '+y+'\nEntrate: '+fe2(ann.totEnt)+' | Uscite: '+fe2(ann.spN)+' | Inv: '+fe2(ann.inv)+'\nUtile lordo: '+fe2(ann.utL)+' | Utile netto: '+fe2(ann.utN)+'\n\n';
+  txt+='LAVORI ATTIVI ('+lavAttivi.length+')\nIncassato: '+fe2(totInc)+'\nMargine reale: '+fe2(totMR)+' ('+(totInc>0?((totMR/totInc)*100).toFixed(1):'0')+'%)\n\n';
+  txt+='STORICO MENSILE:\n';mesiStats.forEach(function(m){txt+='  '+m.mese+': Entr '+fe2(m.ent)+' Usc '+fe2(m.usc)+' Utile '+fe2(m.utile)+'\n';});
+  txt+='\nTOP 3 LAVORI:\n';lavSort.slice(0,3).forEach(function(l,i){txt+='  '+(i+1)+'. '+l.cliente+' - '+l.tipo+': '+fe2(margR(l))+'\n';});
+  txt+='\nSPESE CATEGORIE:\n';Object.entries(catMap).sort(function(a,b){return b[1]-a[1];}).slice(0,8).forEach(function(c){txt+='  '+c[0]+': '+fe2(c[1])+'\n';});
+  txt+='\nRIMBORSI APERTI: '+fe2(rimAp())+'\nDA PAGARE AIUTANTI: '+fe2(totDeb())+'\nCLIENTI: '+db.clienti.length+'\n';
+  txt+='\n---JSON---\n'+JSON.stringify(db,null,2);
+  var blob=new Blob([txt],{type:'text/plain;charset=utf-8'});var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='analisi_miosistema_'+td()+'.txt';a.click();URL.revokeObjectURL(url);
+  toast('Report scaricato - incollalo a Claude!','#3b7dd8');
 }
-function doRestoreAuto(){
-  const s=localStorage.getItem(ABK);
-  if(!s){toast('Nessun auto-backup disponibile','#f39c12');return;}
-  const ts=parseInt(localStorage.getItem(ABTS)||'0');
-  cfm('Ripristinare auto-backup del '+new Date(ts).toLocaleDateString('it-IT')+'?',()=>{
-    try{db=JSON.parse(s);save();rend(curP);toast('✅ Ripristinato','#2ecc71');}
-    catch(e){toast('Errore ripristino','#e74c3c');}
-  });
-}
+var ABK='miosistema_ab',ABTS='miosistema_ab_ts';
+function autoBackup(){var last=parseInt(localStorage.getItem(ABTS)||'0');if(Date.now()-last>86400000){try{localStorage.setItem(ABK,JSON.stringify(db));localStorage.setItem(ABTS,String(Date.now()));}catch(e){}}}
+function doRestoreAuto(){var s=localStorage.getItem(ABK);if(!s){toast('Nessun auto-backup','#f39c12');return;}var ts=parseInt(localStorage.getItem(ABTS)||'0');cfm('Ripristinare auto-backup del '+new Date(ts).toLocaleDateString('it-IT')+'?',function(){try{db=JSON.parse(s);save();rend(curP);toast('Ripristinato','#2ecc71');}catch(e){toast('Errore','#e74c3c');}});}
 
-// ═══════════════════════
-// INIT
-// ═══════════════════════
-load();
-autoBackup();
-rHome();
+load();autoBackup();rHome();
 </script>
 </body>
 </html>
